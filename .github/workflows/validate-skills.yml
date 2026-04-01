@@ -19,7 +19,25 @@ jobs:
       - name: Validate all skills
         run: |
           # Find all directories containing a SKILL.md file and validate them
-          find . -name "SKILL.md" -type f -exec dirname {} \; | while read skill_dir; do
+          failed_skills=()
+          
+          # Use process substitution to avoid subshell issues with the array
+          while read -r skill_dir; do
+            echo "------------------------------------------------------------"
             echo "Validating skill in: $skill_dir"
-            $HOME/.local/bin/uvx --from git+https://github.com/agentskills/agentskills#subdirectory=skills-ref skills-ref validate "$skill_dir"
-          done
+            if ! $HOME/.local/bin/uvx --from git+https://github.com/agentskills/agentskills#subdirectory=skills-ref skills-ref validate "$skill_dir"; then
+              echo "::error file=$skill_dir/SKILL.md::Validation failed for $skill_dir"
+              failed_skills+=("$skill_dir")
+            fi
+          done < <(find . -name "SKILL.md" -type f -exec dirname {} \;)
+
+          echo "------------------------------------------------------------"
+          if [ ${#failed_skills[@]} -ne 0 ]; then
+            echo "Validation failed for the following skills:"
+            for skill in "${failed_skills[@]}"; do
+              echo "  - $skill"
+            done
+            exit 1
+          else
+            echo "All skills validated successfully!"
+          fi
