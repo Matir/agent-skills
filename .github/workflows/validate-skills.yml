@@ -1,0 +1,25 @@
+name: Validate Skills
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Validate all skills
+        run: |
+          # Find all directories containing a SKILL.md file and validate them
+          find . -name "SKILL.md" -type f -exec dirname {} \; | while read skill_dir; do
+            echo "Validating skill in: $skill_dir"
+            $HOME/.local/bin/uvx --from git+https://github.com/agentskills/agentskills#subdirectory=skills-ref skills-ref validate "$skill_dir"
+          done

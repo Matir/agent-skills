@@ -1,0 +1,3 @@
+[submodule "secops-agentkit"]
+	path = secops-agentkit
+	url = https://github.com/AgentSecOps/SecOpsAgentKit.git
