@@ -180,7 +180,7 @@ https://web.archive.org/web/20230615142311/https://github.com/owner/repo/blob/ma
 
 **Step 3: Extract content manually or use waybackpack**
 ```bash
-pip install waybackpack
+uv pip install waybackpack
 waybackpack "https://github.com/owner/repo/blob/main/README.md" -d output_dir
 ```
 

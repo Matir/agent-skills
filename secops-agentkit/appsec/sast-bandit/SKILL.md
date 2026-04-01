@@ -52,7 +52,7 @@ bandit -r project/ -c .bandit.yaml
 
 ### Step 1: Install and Configure Bandit
 
-Install Bandit via pip:
+Install Bandit via uv:
 
 ```bash
 uv pip install bandit

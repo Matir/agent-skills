@@ -25,7 +25,7 @@ description: Use this skill when building applications with Gemini models, Gemin
 
 ### Current SDKs (Use These)
 
-- **Python**: `google-genai` → `pip install google-genai`
+- **Python**: `google-genai` → `uv pip install google-genai`
 - **JavaScript/TypeScript**: `@google/genai` → `npm install @google/genai`
 - **Go**: `google.golang.org/genai` → `go get google.golang.org/genai`
 - **Java**: `com.google.genai:google-genai` (see Maven/Gradle setup below)

@@ -29,7 +29,7 @@ Build a bipartite graph of people and files from git history, then compute owner
 Install with:
 
 ```bash
-pip install networkx
+uv pip install networkx
 ```
 
 ## Workflow

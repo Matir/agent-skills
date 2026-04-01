@@ -41,10 +41,6 @@ Python packages:
 ```
 uv pip install python-docx pdf2image
 ```
-If `uv` is unavailable:
-```
-python3 -m pip install python-docx pdf2image
-```
 System tools (for rendering):
 ```
 # macOS (Homebrew)

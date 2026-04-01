@@ -52,17 +52,9 @@ Python packages:
 ```
 uv pip install openpyxl pandas
 ```
-If `uv` is unavailable:
-```
-python3 -m pip install openpyxl pandas
-```
 Optional (chart-heavy or PDF review workflows):
 ```
 uv pip install matplotlib
-```
-If `uv` is unavailable:
-```
-python3 -m pip install matplotlib
 ```
 System tools (for rendering):
 ```

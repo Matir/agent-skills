@@ -30,7 +30,7 @@ For X API details (endpoints, operators, response format): read
 ## Prerequisites
 
 - **X API Bearer Token** -- set `X_BEARER_TOKEN` (or `XAI_API_KEY`) env var
-- **Python 3.11+** and **uv** (`pip install uv` or https://docs.astral.sh/uv/)
+- **Python 3.11+** and **uv** (https://docs.astral.sh/uv/)
 
 ## CLI Tool
 

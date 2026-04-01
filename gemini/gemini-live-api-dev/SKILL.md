@@ -36,7 +36,7 @@ Key capabilities:
 
 ## SDKs
 
-- **Python**: `google-genai` — `pip install google-genai`
+- **Python**: `google-genai` — `uv pip install google-genai`
 - **JavaScript/TypeScript**: `@google/genai` — `npm install @google/genai`
 
 > [!WARNING]

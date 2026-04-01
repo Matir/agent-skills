@@ -38,7 +38,7 @@ mitmproxy is an interactive, TLS-capable intercepting HTTP proxy for penetration
 Install and run mitmproxy:
 
 ```bash
-# Install via pip
+# Install via uv
 uv pip install mitmproxy
 
 # Start interactive console proxy

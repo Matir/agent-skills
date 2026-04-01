@@ -134,7 +134,7 @@ for row in results:
 
 2. **Install BigQuery Client**:
 ```bash
-pip install google-cloud-bigquery google-auth
+uv pip install google-cloud-bigquery google-auth
 ```
 
 ### Initialize Client

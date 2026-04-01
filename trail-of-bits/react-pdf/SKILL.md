@@ -142,7 +142,7 @@ pdftoppm -png -r 200 document.pdf preview
 **Option 2: PyMuPDF (Python)** — fallback if pdftoppm is not available:
 
 ```bash
-pip install pymupdf
+uv pip install pymupdf
 ```
 
 ```python

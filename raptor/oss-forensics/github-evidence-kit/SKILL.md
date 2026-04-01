@@ -301,7 +301,7 @@ Available IOC types: `COMMIT_SHA`, `FILE_PATH`, `FILE_HASH`, `CODE_SNIPPET`, `EM
 
 ```bash
 cd .claude/skills/github-forensics/github-evidence-kit
-pip install -r requirements.txt
+uv pip install -r requirements.txt
 pytest tests/ -v --ignore=tests/test_integration.py
 ```
 
@@ -352,7 +352,7 @@ The client auto-detects JSON content vs file path.
 ## Requirements
 
 ```bash
-pip install -r requirements.txt
+uv pip install -r requirements.txt
 ```
 
 - `pydantic` - Schema validation

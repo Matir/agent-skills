@@ -37,7 +37,7 @@ span multiple resources, making it more powerful than simple pattern matching.
 ### Install Checkov
 
 ```bash
-# Via pip
+# Via uv
 uv pip install checkov
 
 # Via Homebrew (macOS)

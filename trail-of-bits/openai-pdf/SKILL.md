@@ -39,10 +39,6 @@ Python packages:
 ```
 uv pip install reportlab pdfplumber pypdf
 ```
-If `uv` is unavailable:
-```
-python3 -m pip install reportlab pdfplumber pypdf
-```
 System tools (for rendering):
 ```
 # macOS (Homebrew)
