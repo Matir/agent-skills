@@ -1,6 +1,6 @@
 ---
 name: openai-develop-web-game
-description: 'Use when the agent is building or iterating on a web game (HTML/JS) and needs a reliable development + testing loop: implement small changes, run a Playwright-based test script with short input bursts and intentional pauses, inspect screenshots/text, and review console errors with render_game_to_text. Originally from OpenAI''s curated skills catalog.'
+description: 'Use when the agent is building or iterating on a web game (HTML/JS) and needs a reliable development + testing loop: implement small changes, run a Playwright-based test script with short input bursts and intentional pauses, inspect screenshots/text, and review console errors with render_game_to_text.'
 allowed-tools:
 - Bash
 - Read
@@ -13,7 +13,7 @@ allowed-tools:
 
 Build games in small steps and validate every change. Treat each iteration as: implement → act → pause → observe → adjust.
 
-Scripts and references are located under `{baseDir}/`.
+Scripts and references are located under `../`.
 
 ## Workflow
 
@@ -139,17 +139,8 @@ At the end of your work, leave TODOs and suggestions for the next agent in `prog
 
 ## Scripts
 
-- `$WEB_GAME_CLIENT` (installed default: `{baseDir}/scripts/web_game_playwright_client.js`) — Playwright-based action loop with virtual-time stepping, screenshot capture, and console error buffering. You must pass an action burst via `--actions-file`, `--actions-json`, or `--click`.
+- `$WEB_GAME_CLIENT` (installed default: `../scripts/web_game_playwright_client.js`) — Playwright-based action loop with virtual-time stepping, screenshot capture, and console error buffering. You must pass an action burst via `--actions-file`, `--actions-json`, or `--click`.
 
 ## References
 
-- `$WEB_GAME_ACTIONS` (installed default: `{baseDir}/references/action_payloads.json`) — example action payloads (keyboard + mouse, per-frame capture). Use these to build your burst.
-
-## When to Use
-
-<!-- TODO: review -->
-
-## When NOT to Use
-
-<!-- TODO: review -->
-
+- `$WEB_GAME_ACTIONS` (installed default: `../references/action_payloads.json`) — example action payloads (keyboard + mouse, per-frame capture). Use these to build your burst.
