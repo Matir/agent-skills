@@ -20,12 +20,12 @@ jobs:
         run: |
           # Find all directories containing a SKILL.md file and validate them
           failed_skills=()
-          
+
           # Use process substitution to avoid subshell issues with the array
           while read -r skill_dir; do
             echo "------------------------------------------------------------"
             echo "Validating skill in: $skill_dir"
-            if ! $HOME/.local/bin/uvx --from git+https://github.com/agentskills/agentskills#subdirectory=skills-ref skills-ref validate "$skill_dir"; then
+            if ! $HOME/.local/bin/uvx --from skills-ref agentskills validate "$skill_dir"; then
               echo "::error file=$skill_dir/SKILL.md::Validation failed for $skill_dir"
               failed_skills+=("$skill_dir")
             fi

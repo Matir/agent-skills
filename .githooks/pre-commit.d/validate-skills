@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Find the root of the git repository
+GIT_ROOT=$(git rev-parse --show-toplevel)
+
+# Find all directories containing a SKILL.md file and validate them
+failed_skills=()
+
+# Use find to list all directories with a SKILL.md file starting from the git root
+while read -r skill_dir; do
+  # Redirect output to /dev/null for valid skills
+  # agentskills validate returns 0 on success, 1 on failure
+  if ! agentskills validate "$skill_dir" > /dev/null 2>&1; then
+    echo "Validation failed for skill in: $skill_dir"
+    # Run again without redirection to show the error
+    agentskills validate "$skill_dir"
+    failed_skills+=("$skill_dir")
+  fi
+done < <(find "$GIT_ROOT" -name "SKILL.md" -type f -exec dirname {} \;)
+
+if [ ${#failed_skills[@]} -ne 0 ]; then
+  exit 1
+else
+  exit 0
+fi
