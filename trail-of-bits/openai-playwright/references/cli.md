@@ -3,11 +3,11 @@
 Use the wrapper script unless the CLI is already installed globally:
 
 ```bash
-export PWCLI="{baseDir}/scripts/playwright_cli.sh"
+export PWCLI="../../scripts/playwright_cli.sh"
 "$PWCLI" --help
 ```
 
-User-scoped skills install under `{baseDir}/skills` (default: `~/.claude/skills`).
+User-scoped skills install under `../../skills` (default: `~/.claude/skills`).
 
 Optional convenience alias:
 

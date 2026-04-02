@@ -26,7 +26,7 @@ Prereq: authenticate with the standard GitHub CLI once (for example, run `gh aut
 
 ## Quick start
 
-- `python "{baseDir}/scripts/inspect_pr_checks.py" --repo "." --pr "<number-or-url>"`
+- `python "../scripts/inspect_pr_checks.py" --repo "." --pr "<number-or-url>"`
 - Add `--json` if you want machine-friendly output for summarization.
 
 ## Workflow
@@ -39,7 +39,7 @@ Prereq: authenticate with the standard GitHub CLI once (for example, run `gh aut
    - If the user provides a PR number or URL, use that directly.
 3. Inspect failing checks (GitHub Actions only).
    - Preferred: run the bundled script (handles gh field drift and job-log fallbacks):
-     - `python "{baseDir}/scripts/inspect_pr_checks.py" --repo "." --pr "<number-or-url>"`
+     - `python "../scripts/inspect_pr_checks.py" --repo "." --pr "<number-or-url>"`
      - Add `--json` for machine-friendly output.
    - Manual fallback:
      - `gh pr checks <pr> --json name,state,bucket,link,startedAt,completedAt,workflow`
@@ -69,15 +69,15 @@ Prereq: authenticate with the standard GitHub CLI once (for example, run `gh aut
 Fetch failing PR checks, pull GitHub Actions logs, and extract a failure snippet. Exits non-zero when failures remain so it can be used in automation.
 
 Usage examples:
-- `python "{baseDir}/scripts/inspect_pr_checks.py" --repo "." --pr "123"`
-- `python "{baseDir}/scripts/inspect_pr_checks.py" --repo "." --pr "https://github.com/org/repo/pull/123" --json`
-- `python "{baseDir}/scripts/inspect_pr_checks.py" --repo "." --max-lines 200 --context 40`
+- `python "../scripts/inspect_pr_checks.py" --repo "." --pr "123"`
+- `python "../scripts/inspect_pr_checks.py" --repo "." --pr "https://github.com/org/repo/pull/123" --json`
+- `python "../scripts/inspect_pr_checks.py" --repo "." --max-lines 200 --context 40`
 
 ## When to Use
 
-<!-- TODO: review -->
+When asked to review a specific GH PR or a GH PR is being considered to fix an
+issue.
 
-## When NOT to Use
+## When not to Use
 
-<!-- TODO: review -->
-
+When the user just mentions a GH PR.

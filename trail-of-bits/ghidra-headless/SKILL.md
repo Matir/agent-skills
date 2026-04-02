@@ -34,13 +34,13 @@ information.
 
 | Task | Command |
 |------|---------|
-| Full analysis with all exports | `{baseDir}/scripts/ghidra-analyze.sh -s ExportAll.java -o ./output binary` |
-| Decompile to C code | `{baseDir}/scripts/ghidra-analyze.sh -s ExportDecompiled.java -o ./output binary` |
-| List functions | `{baseDir}/scripts/ghidra-analyze.sh -s ExportFunctions.java -o ./output binary` |
-| Extract strings | `{baseDir}/scripts/ghidra-analyze.sh -s ExportStrings.java -o ./output binary` |
-| Get call graph | `{baseDir}/scripts/ghidra-analyze.sh -s ExportCalls.java -o ./output binary` |
-| Export symbols | `{baseDir}/scripts/ghidra-analyze.sh -s ExportSymbols.java -o ./output binary` |
-| Find Ghidra path | `{baseDir}/scripts/find-ghidra.sh` |
+| Full analysis with all exports | `../scripts/ghidra-analyze.sh -s ExportAll.java -o ./output binary` |
+| Decompile to C code | `../scripts/ghidra-analyze.sh -s ExportDecompiled.java -o ./output binary` |
+| List functions | `../scripts/ghidra-analyze.sh -s ExportFunctions.java -o ./output binary` |
+| Extract strings | `../scripts/ghidra-analyze.sh -s ExportStrings.java -o ./output binary` |
+| Get call graph | `../scripts/ghidra-analyze.sh -s ExportCalls.java -o ./output binary` |
+| Export symbols | `../scripts/ghidra-analyze.sh -s ExportSymbols.java -o ./output binary` |
+| Find Ghidra path | `../scripts/find-ghidra.sh` |
 
 ## Prerequisites
 
@@ -54,7 +54,7 @@ location.
 ## Main Wrapper Script
 
 ```bash
-{baseDir}/scripts/ghidra-analyze.sh [options] <binary>
+../scripts/ghidra-analyze.sh [options] <binary>
 ```
 
 Wrapper that handles project creation/cleanup and provides a simpler
@@ -90,7 +90,7 @@ ExportSymbols.java separately if needed. Best for initial analysis.
 - `{name}_interesting.txt` — Functions matching security-relevant patterns
 
 ```bash
-{baseDir}/scripts/ghidra-analyze.sh -s ExportAll.java -o ./analysis firmware.bin
+../scripts/ghidra-analyze.sh -s ExportAll.java -o ./analysis firmware.bin
 ```
 
 ### ExportDecompiled.java
@@ -131,7 +131,7 @@ Export all symbols: imports, exports, and internal symbols.
 
 ```bash
 mkdir -p ./analysis
-{baseDir}/scripts/ghidra-analyze.sh -s ExportAll.java -o ./analysis unknown_binary
+../scripts/ghidra-analyze.sh -s ExportAll.java -o ./analysis unknown_binary
 cat ./analysis/unknown_binary_summary.txt
 cat ./analysis/unknown_binary_interesting.txt
 ```
@@ -139,7 +139,7 @@ cat ./analysis/unknown_binary_interesting.txt
 ### Analyze Firmware
 
 ```bash
-{baseDir}/scripts/ghidra-analyze.sh \
+../scripts/ghidra-analyze.sh \
     -p "ARM:LE:32:v7" \
     -s ExportAll.java \
     -o ./firmware_analysis \
@@ -149,7 +149,7 @@ cat ./analysis/unknown_binary_interesting.txt
 ### Quick Function Listing
 
 ```bash
-{baseDir}/scripts/ghidra-analyze.sh --no-analysis -s ExportFunctions.java -o . program
+../scripts/ghidra-analyze.sh --no-analysis -s ExportFunctions.java -o . program
 cat program_functions.json | jq '.functions[] | "\(.address): \(.name)"'
 ```
 
@@ -179,7 +179,7 @@ Common processor IDs for the `-p` option:
 ### Ghidra Not Found
 
 ```bash
-{baseDir}/scripts/find-ghidra.sh
+../scripts/find-ghidra.sh
 # Or set GHIDRA_HOME if in non-standard location
 export GHIDRA_HOME=/path/to/ghidra_11.x_PUBLIC
 ```
@@ -187,9 +187,9 @@ export GHIDRA_HOME=/path/to/ghidra_11.x_PUBLIC
 ### Analysis Takes Too Long
 
 ```bash
-{baseDir}/scripts/ghidra-analyze.sh --timeout 300 -s ExportAll.java binary
+../scripts/ghidra-analyze.sh --timeout 300 -s ExportAll.java binary
 # Or skip analysis for quick export
-{baseDir}/scripts/ghidra-analyze.sh --no-analysis -s ExportSymbols.java binary
+../scripts/ghidra-analyze.sh --no-analysis -s ExportSymbols.java binary
 ```
 
 ### Out of Memory
@@ -203,7 +203,7 @@ export MAXMEM=4G
 
 Explicitly specify the processor:
 ```bash
-{baseDir}/scripts/ghidra-analyze.sh -p "ARM:LE:32:v7" -s ExportAll.java firmware.bin
+../scripts/ghidra-analyze.sh -p "ARM:LE:32:v7" -s ExportAll.java firmware.bin
 ```
 
 ## Tips

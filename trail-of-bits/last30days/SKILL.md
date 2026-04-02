@@ -80,7 +80,7 @@ This text MUST appear before you call any tools. It confirms to the user that yo
 
 **Step 1: Run the research script**
 ```bash
-python3 "{baseDir}/scripts/last30days.py" "$ARGUMENTS" --emit=compact 2>&1
+python3 "../scripts/last30days.py" "$ARGUMENTS" --emit=compact 2>&1
 ```
 
 The script will automatically:

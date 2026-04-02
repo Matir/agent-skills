@@ -1,6 +1,6 @@
 ---
 name: openai-screenshot
-description: Use when the user explicitly asks for a desktop or system screenshot (full screen, specific app or window, or a pixel region), or when tool-specific capture capabilities are unavailable and an OS-level capture is needed. Originally from OpenAI's curated skills catalog.
+description: Use when the user explicitly asks for a desktop or system screenshot (full screen, specific app or window, or a pixel region), or when tool-specific capture capabilities are unavailable and an OS-level capture is needed.
 allowed-tools:
 - Bash
 - Read
@@ -33,22 +33,22 @@ The helpers route Swift's module cache to `$TMPDIR/codex-swift-module-cache`
 to avoid extra sandbox module-cache prompts.
 
 ```bash
-bash {baseDir}/scripts/ensure_macos_permissions.sh
+bash ../scripts/ensure_macos_permissions.sh
 ```
 
 To avoid multiple sandbox approval prompts, combine preflight + capture in one
 command when possible:
 
 ```bash
-bash {baseDir}/scripts/ensure_macos_permissions.sh && \
-python3 {baseDir}/scripts/take_screenshot.py --app "the agent"
+bash ../scripts/ensure_macos_permissions.sh && \
+python3 ../scripts/take_screenshot.py --app "the agent"
 ```
 
 For the agent inspection runs, keep the output in temp:
 
 ```bash
-bash {baseDir}/scripts/ensure_macos_permissions.sh && \
-python3 {baseDir}/scripts/take_screenshot.py --app "<App>" --mode temp
+bash ../scripts/ensure_macos_permissions.sh && \
+python3 ../scripts/take_screenshot.py --app "<App>" --mode temp
 ```
 
 Use the bundled scripts to avoid re-deriving OS-specific commands.
@@ -58,7 +58,7 @@ Use the bundled scripts to avoid re-deriving OS-specific commands.
 Run the helper from the repo root:
 
 ```bash
-python3 {baseDir}/scripts/take_screenshot.py
+python3 ../scripts/take_screenshot.py
 ```
 
 Common patterns:
@@ -66,55 +66,55 @@ Common patterns:
 - Default location (user asked for "a screenshot"):
 
 ```bash
-python3 {baseDir}/scripts/take_screenshot.py
+python3 ../scripts/take_screenshot.py
 ```
 
 - Temp location (the agent visual check):
 
 ```bash
-python3 {baseDir}/scripts/take_screenshot.py --mode temp
+python3 ../scripts/take_screenshot.py --mode temp
 ```
 
 - Explicit location (user provided a path or filename):
 
 ```bash
-python3 {baseDir}/scripts/take_screenshot.py --path output/screen.png
+python3 ../scripts/take_screenshot.py --path output/screen.png
 ```
 
 - App/window capture by app name (macOS only; substring match is OK; captures all matching windows):
 
 ```bash
-python3 {baseDir}/scripts/take_screenshot.py --app "the agent"
+python3 ../scripts/take_screenshot.py --app "the agent"
 ```
 
 - Specific window title within an app (macOS only):
 
 ```bash
-python3 {baseDir}/scripts/take_screenshot.py --app "the agent" --window-name "Settings"
+python3 ../scripts/take_screenshot.py --app "the agent" --window-name "Settings"
 ```
 
 - List matching window ids before capturing (macOS only):
 
 ```bash
-python3 {baseDir}/scripts/take_screenshot.py --list-windows --app "the agent"
+python3 ../scripts/take_screenshot.py --list-windows --app "the agent"
 ```
 
 - Pixel region (x,y,w,h):
 
 ```bash
-python3 {baseDir}/scripts/take_screenshot.py --mode temp --region 100,200,800,600
+python3 ../scripts/take_screenshot.py --mode temp --region 100,200,800,600
 ```
 
 - Focused/active window (captures only the frontmost window; use `--app` to capture all windows):
 
 ```bash
-python3 {baseDir}/scripts/take_screenshot.py --mode temp --active-window
+python3 ../scripts/take_screenshot.py --mode temp --active-window
 ```
 
 - Specific window id (use --list-windows on macOS to discover ids):
 
 ```bash
-python3 {baseDir}/scripts/take_screenshot.py --window-id 12345
+python3 ../scripts/take_screenshot.py --window-id 12345
 ```
 
 The script prints one path per capture. When multiple windows or displays match, it prints multiple paths (one per line) and adds suffixes like `-w<windowId>` or `-d<display>`. View each path sequentially with the image viewer tool, and only manipulate images if needed or requested.
@@ -124,8 +124,8 @@ The script prints one path per capture. When multiple windows or displays match,
 - "Take a look at <App> and tell me what you see": capture to temp, then view each printed path in order.
 
 ```bash
-bash {baseDir}/scripts/ensure_macos_permissions.sh && \
-python3 {baseDir}/scripts/take_screenshot.py --app "<App>" --mode temp
+bash ../scripts/ensure_macos_permissions.sh && \
+python3 ../scripts/take_screenshot.py --app "<App>" --mode temp
 ```
 
 - "The design from Figma is not matching what is implemented": use a Figma MCP/skill to capture the design first, then capture the running app with this skill (typically to temp) and compare the raw screenshots before any manipulation.
@@ -155,7 +155,7 @@ Coordinate regions require `scrot` or ImageMagick `import`.
 Run the PowerShell helper:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File {baseDir}/scripts/take_screenshot.ps1
+powershell -ExecutionPolicy Bypass -File ../scripts/take_screenshot.ps1
 ```
 
 Common patterns:
@@ -163,37 +163,37 @@ Common patterns:
 - Default location:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File {baseDir}/scripts/take_screenshot.ps1
+powershell -ExecutionPolicy Bypass -File ../scripts/take_screenshot.ps1
 ```
 
 - Temp location (the agent visual check):
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File {baseDir}/scripts/take_screenshot.ps1 -Mode temp
+powershell -ExecutionPolicy Bypass -File ../scripts/take_screenshot.ps1 -Mode temp
 ```
 
 - Explicit path:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File {baseDir}/scripts/take_screenshot.ps1 -Path "C:\Temp\screen.png"
+powershell -ExecutionPolicy Bypass -File ../scripts/take_screenshot.ps1 -Path "C:\Temp\screen.png"
 ```
 
 - Pixel region (x,y,w,h):
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File {baseDir}/scripts/take_screenshot.ps1 -Mode temp -Region 100,200,800,600
+powershell -ExecutionPolicy Bypass -File ../scripts/take_screenshot.ps1 -Mode temp -Region 100,200,800,600
 ```
 
 - Active window (ask the user to focus it first):
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File {baseDir}/scripts/take_screenshot.ps1 -Mode temp -ActiveWindow
+powershell -ExecutionPolicy Bypass -File ../scripts/take_screenshot.ps1 -Mode temp -ActiveWindow
 ```
 
 - Specific window handle (only when provided):
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File {baseDir}/scripts/take_screenshot.ps1 -WindowHandle 123456
+powershell -ExecutionPolicy Bypass -File ../scripts/take_screenshot.ps1 -WindowHandle 123456
 ```
 
 ## Direct OS commands (fallbacks)
@@ -264,7 +264,7 @@ gnome-screenshot -w -f output/window.png
 
 ## Error handling
 
-- On macOS, run `bash {baseDir}/scripts/ensure_macos_permissions.sh` first to request Screen Recording in one place.
+- On macOS, run `bash ../scripts/ensure_macos_permissions.sh` first to request Screen Recording in one place.
 - If you see "screen capture checks are blocked in the sandbox", "could not create image from display", or Swift `ModuleCache` permission errors in a sandboxed run, rerun the command with escalated permissions.
 - If macOS app/window capture returns no matches, run `--list-windows --app "AppName"` and retry with `--window-id`, and make sure the app is visible on screen.
 - If Linux region/window capture fails, check tool availability with `command -v scrot`, `command -v gnome-screenshot`, and `command -v import`.
@@ -272,10 +272,8 @@ gnome-screenshot -w -f output/window.png
 - Always report the saved file path in the response.
 
 ## When to Use
-
-<!-- TODO: review -->
+Use ONLY when the user explicitly asks for a desktop or system screenshot (full screen, specific app or window, or a pixel region), or when tool-specific capture capabilities are unavailable and an OS-level capture is needed.
 
 ## When NOT to Use
 
-<!-- TODO: review -->
-
+Do not use without explicit request for a screenshot.

@@ -1,6 +1,6 @@
 ---
 name: openai-playwright
-description: Use when the task requires automating a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging) via `playwright-cli` or the bundled wrapper script. Originally from OpenAI's curated skills catalog.
+description: Automate a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging) via `playwright-cli` or the bundled wrapper script.
 allowed-tools:
 - Bash
 - Read
@@ -36,7 +36,7 @@ playwright-cli --help
 
 Once `npx` is present, proceed with the wrapper script. A global install of `playwright-cli` is optional.
 
-Scripts and references are located under `{baseDir}/`.
+Scripts and references are located under `../`.
 
 ## Quick start
 
@@ -146,9 +146,9 @@ Open only what you need:
 
 ## When to Use
 
-<!-- TODO: review -->
+When the task requires a fully automated real browser.
 
 ## When NOT to Use
 
-<!-- TODO: review -->
-
+If capturing content via native tools or curl is simpler and does not require
+a full browser to be executed.

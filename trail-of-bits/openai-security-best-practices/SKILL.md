@@ -1,6 +1,6 @@
 ---
 name: openai-security-best-practices
-description: Perform language and framework specific security best-practice reviews and suggest improvements. Trigger only when the user explicitly requests security best practices guidance, a security review/report, or secure-by-default coding help. Trigger only for supported languages (python, javascript/typescript, go). Do not trigger for general code review, debugging, or non-security tasks. Originally from OpenAI's curated skills catalog.
+description: Perform language and framework specific security best-practice reviews and suggest improvements. Trigger only when the user explicitly requests security best practices guidance, a security review/report, or secure-by-default coding help. Do not trigger for general code review, debugging, or non-security tasks.
 allowed-tools:
 - Bash
 - Read
@@ -93,9 +93,8 @@ While TLS is important for production deployments, most development work will be
 
 ## When to Use
 
-<!-- TODO: review -->
+Trigger only when the user explicitly requests security best practices guidance, a security review/report, or secure-by-default coding help. Trigger only for supported languages (python, javascript/typescript, go).
 
 ## When NOT to Use
 
-<!-- TODO: review -->
-
+General code review, debugging, or non-security tasks.

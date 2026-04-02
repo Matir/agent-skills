@@ -1,6 +1,6 @@
 ---
 name: openai-security-threat-model
-description: Repository-grounded threat modeling that enumerates trust boundaries, assets, attacker capabilities, abuse paths, and mitigations, and writes a concise Markdown threat model. Trigger only when the user explicitly asks to threat model a codebase or path, enumerate threats/abuse paths, or perform AppSec threat modeling. Do not trigger for general architecture summaries, code review, or non-security design work. Originally from OpenAI's curated skills catalog.
+description: Repository-grounded threat modeling that enumerates trust boundaries, assets, attacker capabilities, abuse paths, and mitigations, and writes a concise Markdown threat model. Trigger only when the user explicitly asks to threat model a codebase or path, enumerate threats/abuse paths, or perform AppSec threat modeling. Do not trigger for general architecture summaries, code review, or non-security design work.
 allowed-tools:
 - Read
 - Grep
@@ -87,9 +87,8 @@ Only load the reference files you need. Keep the final result concise, grounded,
 
 ## When to Use
 
-<!-- TODO: review -->
+When the user explicitly asks to threat model a codebase or path, enumerate threats/abuse paths, or perform AppSec threat modeling.
 
 ## When NOT to Use
 
-<!-- TODO: review -->
-
+Do not trigger for general architecture summaries, code review, or non-security design work.

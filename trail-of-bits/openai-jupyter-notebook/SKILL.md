@@ -29,7 +29,7 @@ Prefer the bundled templates and the helper script for consistent structure and 
 - If the request is instructional, step-by-step, or audience-specific, choose `tutorial`.
 - If editing an existing notebook, treat it as a refactor: preserve intent and improve structure.
 
-Scripts and references are located under `{baseDir}/`.
+Scripts and references are located under `../`.
 
 ## Workflow
 1. Lock the intent.
@@ -77,7 +77,7 @@ Use the final pass checklist in `references/quality-checklist.md`.
 - The helper script loads a template, updates the title cell, and writes a notebook.
 
 Script path:
-- `$JUPYTER_NOTEBOOK_CLI` (installed default: `{baseDir}/scripts/new_notebook.py`)
+- `$JUPYTER_NOTEBOOK_CLI` (installed default: `../scripts/new_notebook.py`)
 
 ## Temp and output conventions
 - Use `tmp/jupyter-notebook/` for intermediate files; delete when done.
@@ -103,7 +103,3 @@ No required environment variables.
 - `references/tutorial-patterns.md`: tutorial structure and teaching flow.
 - `references/notebook-structure.md`: notebook JSON shape and safe editing rules.
 - `references/quality-checklist.md`: final validation checklist.
-## When NOT to Use
-
-<!-- TODO: review -->
-

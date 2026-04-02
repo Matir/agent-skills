@@ -37,12 +37,12 @@ allowed-tools:
 
 ## Files
 
-- `{baseDir}/skills/react-pdf/references/google-fonts.txt` - Metadata for ~65 popular Google Fonts with TrueType URLs. Each
+- `../references/google-fonts.txt` - Metadata for ~65 popular Google Fonts with TrueType URLs. Each
   line is a font variant in tab-separated format: `font name`, `style`, `category`, `weight`, `url`.
-- `{baseDir}/skills/react-pdf/references/components.md` - Full component API reference and supported CSS properties
-- `{baseDir}/skills/react-pdf/assets/example-template.tsx` - Minimal working example demonstrating fixed footers, page numbers,
+- `../references/components.md` - Full component API reference and supported CSS properties
+- `../assets/example-template.tsx` - Minimal working example demonstrating fixed footers, page numbers,
   and unbreakable content. Read this before starting to understand the basic patterns. Note: not all
-  APIs are shown here — always refer to the docs and `{baseDir}/skills/react-pdf/references/components.md` for the full API.
+  APIs are shown here — always refer to the docs and `../references/components.md` for the full API.
 
 ## Prerequisites
 
@@ -68,7 +68,7 @@ uses esbuild under the hood and handles JSX transformation automatically.
 - **StyleSheet**: Create reusable styles
 
 For full component props and CSS properties, see
-[references/components.md]({baseDir}/skills/react-pdf/references/components.md).
+[references/components.md](../references/components.md).
 
 ## Basic Example
 
@@ -332,11 +332,11 @@ semibold (600), bold (700), ultrabold (800), heavy (900)
 
 ## Google Fonts
 
-Use `{baseDir}/skills/react-pdf/references/google-fonts.txt` to find font URLs, then download locally:
+Use `../references/google-fonts.txt` to find font URLs, then download locally:
 
 ```bash
 # Find the font URL
-grep "^Roboto" {baseDir}/skills/react-pdf/references/google-fonts.txt | grep "700" | grep "normal"
+grep "^Roboto" ../references/google-fonts.txt | grep "700" | grep "normal"
 
 # Download
 mkdir -p fonts

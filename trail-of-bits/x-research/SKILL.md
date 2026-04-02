@@ -18,7 +18,7 @@ iteratively refine, follow threads, deep-dive linked content, and synthesize sou
 briefings.
 
 For X API details (endpoints, operators, response format): read
-`{baseDir}/skills/x-research/references/x-api.md`.
+`../references/x-api.md`.
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ All commands use `uv run` for automatic dependency management:
 ### Search
 
 ```bash
-uv run {baseDir}/skills/x-research/scripts/x_search.py search "<query>" [options]
+uv run ../scripts/x_search.py search "<query>" [options]
 ```
 
 **Options:**
@@ -54,17 +54,17 @@ Auto-adds `-is:retweet` unless query already includes it. All searches display e
 
 **Examples:**
 ```bash
-uv run {baseDir}/skills/x-research/scripts/x_search.py search "claude code" --sort likes --limit 10
-uv run {baseDir}/skills/x-research/scripts/x_search.py search "from:anthropic" --sort recent
-uv run {baseDir}/skills/x-research/scripts/x_search.py search "(cursor OR windsurf) AI editor" --pages 2 --save
-uv run {baseDir}/skills/x-research/scripts/x_search.py search "AI agents" --quick
-uv run {baseDir}/skills/x-research/scripts/x_search.py search "AI agents" --quality --quick
+uv run ../scripts/x_search.py search "claude code" --sort likes --limit 10
+uv run ../scripts/x_search.py search "from:anthropic" --sort recent
+uv run ../scripts/x_search.py search "(cursor OR windsurf) AI editor" --pages 2 --save
+uv run ../scripts/x_search.py search "AI agents" --quick
+uv run ../scripts/x_search.py search "AI agents" --quality --quick
 ```
 
 ### Profile
 
 ```bash
-uv run {baseDir}/skills/x-research/scripts/x_search.py profile <username> [--count N] [--replies] [--json]
+uv run ../scripts/x_search.py profile <username> [--count N] [--replies] [--json]
 ```
 
 Fetches recent tweets from a specific user (excludes replies by default).
@@ -72,7 +72,7 @@ Fetches recent tweets from a specific user (excludes replies by default).
 ### Thread
 
 ```bash
-uv run {baseDir}/skills/x-research/scripts/x_search.py thread <tweet_id> [--pages N]
+uv run ../scripts/x_search.py thread <tweet_id> [--pages N]
 ```
 
 Fetches full conversation thread by root tweet ID.
@@ -80,24 +80,24 @@ Fetches full conversation thread by root tweet ID.
 ### Single Tweet
 
 ```bash
-uv run {baseDir}/skills/x-research/scripts/x_search.py tweet <tweet_id> [--json]
+uv run ../scripts/x_search.py tweet <tweet_id> [--json]
 ```
 
 ### Watchlist
 
 ```bash
-uv run {baseDir}/skills/x-research/scripts/x_search.py watchlist                        # Show all
-uv run {baseDir}/skills/x-research/scripts/x_search.py watchlist add <user> [note]      # Add account
-uv run {baseDir}/skills/x-research/scripts/x_search.py watchlist remove <user>           # Remove
-uv run {baseDir}/skills/x-research/scripts/x_search.py watchlist check                   # Check recent
+uv run ../scripts/x_search.py watchlist                        # Show all
+uv run ../scripts/x_search.py watchlist add <user> [note]      # Add account
+uv run ../scripts/x_search.py watchlist remove <user>           # Remove
+uv run ../scripts/x_search.py watchlist check                   # Check recent
 ```
 
-Watchlist stored in `{baseDir}/skills/x-research/data/watchlist.json`.
+Watchlist stored in `../data/watchlist.json`.
 
 ### Cache
 
 ```bash
-uv run {baseDir}/skills/x-research/scripts/x_search.py cache clear
+uv run ../scripts/x_search.py cache clear
 ```
 
 15-minute TTL. Avoids re-fetching identical queries.
@@ -130,7 +130,7 @@ Run each query via CLI. After each, assess:
 
 When a tweet has high engagement or is a thread starter:
 ```bash
-uv run {baseDir}/skills/x-research/scripts/x_search.py thread <tweet_id>
+uv run ../scripts/x_search.py thread <tweet_id>
 ```
 
 ### 4. Deep-Dive Linked Content

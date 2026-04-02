@@ -1,6 +1,6 @@
 ---
 name: openai-security-ownership-map
-description: 'Analyze git repositories to build a security ownership topology (people-to-file), compute bus factor and sensitive-code ownership, and export CSV/JSON for graph databases and visualization. Trigger only when the user explicitly wants a security-oriented ownership or bus-factor analysis grounded in git history (for example: orphaned sensitive code, security maintainers, CODEOWNERS reality checks for risk, sensitive hotspots, or ownership clusters). Do not trigger for general maintainer lists or non-security ownership questions. Originally from OpenAI''s curated skills catalog.'
+description: 'Analyze git repositories to build a security ownership topology (people-to-file), compute bus factor and sensitive-code ownership, and export CSV/JSON for graph databases and visualization. Trigger only when the user explicitly wants a security-oriented ownership or bus-factor analysis grounded in git history (for example: orphaned sensitive code, security maintainers, CODEOWNERS reality checks for risk, sensitive hotspots, or ownership clusters). Do not trigger for general maintainer lists or non-security ownership questions.'
 allowed-tools:
 - Bash
 - Read
@@ -213,9 +213,8 @@ Use `references/neo4j-import.md` when you need to load the CSVs into Neo4j. It i
 
 ## When to Use
 
-<!-- TODO: review -->
+When the user needs to identify owners for particular code paths.
 
 ## When NOT to Use
 
-<!-- TODO: review -->
-
+If the concern is about code content, but now ownership.

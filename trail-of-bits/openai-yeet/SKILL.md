@@ -1,6 +1,6 @@
 ---
 name: openai-yeet
-description: Use only when the user explicitly asks to stage, commit, push, and open a GitHub pull request in one flow using the GitHub CLI (`gh`). Originally from OpenAI's curated skills catalog.
+description: Stage, commit, push, and open a GitHub pull request in one flow using the GitHub CLI (`gh`).
 allowed-tools:
 - Bash
 - Read
@@ -16,13 +16,14 @@ allowed-tools:
 
 ## Naming conventions
 
-- Branch: `claude/{description}` when starting from main/master/default.
+- Branch: `{username}/{description}` when starting from main/master/default.
+  Ensure description is converted to slug for branch naming.
 - Commit: `{description}` (terse).
-- PR title: `[claude] {description}` summarizing the full diff.
+- PR title: `{description}` summarizing the full diff.
 
 ## Workflow
 
-- If on main/master/default, create a branch: `git checkout -b "claude/{description}"`
+- If on main/master/default, create a branch: `git checkout -b "{username}/{description}"`
 - Otherwise stay on the current branch.
 - Confirm status, then stage everything: `git status -sb` then `git add -A`.
 - Commit tersely with the description: `git commit -m "{description}"`
@@ -35,9 +36,8 @@ allowed-tools:
 
 ## When to Use
 
-<!-- TODO: review -->
+Only when the user explicitly asks to stage, commit, push, and open a GitHub pull request in one flow using the GitHub CLI (`gh`).
 
 ## When NOT to Use
 
-<!-- TODO: review -->
-
+Do not use except in the flow mentioned above.

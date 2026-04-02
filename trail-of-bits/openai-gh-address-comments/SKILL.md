@@ -1,6 +1,6 @@
 ---
 name: openai-gh-address-comments
-description: Help address review/issue comments on the open GitHub PR for the current branch using gh CLI; verify gh auth first and prompt the user to authenticate if not logged in. Originally from OpenAI's curated skills catalog.
+description: Help address review/issue comments on the open GitHub PR for the current branch using gh CLI; verify gh auth first and prompt the user to authenticate if not logged in.
 allowed-tools:
 - Bash
 - Read
@@ -27,9 +27,8 @@ Notes:
 
 ## When to Use
 
-<!-- TODO: review -->
+When the user asks for help addressing comments.
 
 ## When NOT to Use
 
-<!-- TODO: review -->
-
+Any context where the user has not requested help addressing comments.

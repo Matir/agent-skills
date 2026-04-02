@@ -153,4 +153,4 @@ Operations staff workstation -> Lateral movement into internal network
 ---
 
 **Reference methodologies**:
-- See {baseDir}/references/unauthorized-access.md (weak credentials, service exposure) and {baseDir}/references/info-disclosure.md (reconnaissance) for related methodology.
+- See ../../references/unauthorized-access.md (weak credentials, service exposure) and ../../references/info-disclosure.md (reconnaissance) for related methodology.

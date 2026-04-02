@@ -1,6 +1,6 @@
 ---
 name: openai-spreadsheet
-description: Use when tasks involve creating, editing, analyzing, or formatting spreadsheets (`.xlsx`, `.csv`, `.tsv`) using Python (`openpyxl`, `pandas`), especially when formulas, references, and formatting need to be preserved and verified. Originally from OpenAI's curated skills catalog.
+description: Creating, editing, analyzing, or formatting spreadsheets (`.xlsx`, `.csv`, `.tsv`) using Python (`openpyxl`, `pandas`), especially when formulas, references, and formatting need to be preserved and verified.
 allowed-tools:
 - Bash
 - Read
@@ -117,7 +117,3 @@ If the spreadsheet is an IB-style model (LBO, DCF, 3-statement, valuation):
 - Section headers should be merged cells with dark fill and white text.
 - Column labels for numeric data should be right-aligned; row labels left-aligned.
 - Indent submetrics under their parent line items.
-## When NOT to Use
-
-<!-- TODO: review -->
-

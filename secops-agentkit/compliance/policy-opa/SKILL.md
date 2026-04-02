@@ -1,8 +1,6 @@
 ---
 name: policy-opa
-description: 'Policy-as-code enforcement and compliance validation using Open Policy Agent (OPA). Use when: (1) Enforcing security and compliance policies across infrastructure and applications, (2) Validating Kubernetes admission control policies, (3) Implementing policy-as-code for compliance frameworks (SOC2, PCI-DSS, GDPR, HIPAA), (4) Testing and evaluating OPA Rego policies, (5) Integrating policy checks into CI/CD pipelines, (6) Auditing configuration drift against organizational security standards, (7) Implementing least-privilege access controls.
-
-  '
+description: 'Policy-as-code enforcement and compliance validation using Open Policy Agent (OPA). Use when: (1) Enforcing security and compliance policies across infrastructure and applications, (2) Validating Kubernetes admission control policies, (3) Implementing policy-as-code for compliance frameworks (SOC2, PCI-DSS, GDPR, HIPAA), (4) Testing and evaluating OPA Rego policies, (5) Integrating policy checks into CI/CD pipelines, (6) Auditing configuration drift against organizational security standards, (7) Implementing least-privilege access controls.'
 metadata:
   version: 0.1.0
   maintainer: SirAppSec
@@ -185,20 +183,8 @@ opa test . --verbose
 
 ### Step 4: Evaluate Policies Against Configuration
 
-Use the bundled evaluation script for policy validation:
+Use OPA directly:
 
-```bash
-# Evaluate single file
-./scripts/evaluate_policy.py --policy policies/ --input config.yaml
-
-# Evaluate directory of configurations
-./scripts/evaluate_policy.py --policy policies/ --input configs/ --recursive
-
-# Output results in JSON format for CI/CD integration
-./scripts/evaluate_policy.py --policy policies/ --input config.yaml --format json
-```
-
-Or use OPA directly:
 ```bash
 # Evaluate with formatted output
 opa eval --data policies/ --input config.yaml --format pretty 'data.compliance.violations'

@@ -57,7 +57,7 @@ Each full reference file in `references/` has these sections:
 
 ### Phase 1: Load the Cheatsheet
 
-**Before touching any Solidity files**, read `{baseDir}/skills/scv-scan/references/CHEATSHEET.md` in full.
+**Before touching any Solidity files**, read `../references/CHEATSHEET.md` in full.
 
 This file contains a condensed entry for every known vulnerability class: name, what to look for (syntactic and semantic), and default severity. Internalize these patterns — they are your detection surface for the sweep phase. Do NOT read any full reference files yet.
 
@@ -91,7 +91,7 @@ Merge results from Pass A and Pass B into a deduplicated candidate list. Each en
 
 For each candidate in the list:
 
-1. **Read the full reference file** for the suspected vulnerability type (e.g., `{baseDir}/skills/scv-scan/references/reentrancy.md`). Read it now — not before.
+1. **Read the full reference file** for the suspected vulnerability type (e.g., `../references/reentrancy.md`). Read it now — not before.
 2. **Walk through every Detection Heuristic step** against the actual code. Be precise — trace variable values, check modifiers, follow call chains.
 3. **Check every False Positive condition**. If any false positive condition matches, discard the finding and note why.
 4. **Cross-reference**: one code location can match multiple vulnerability types. If the cheatsheet maps the same pattern to multiple references, read and validate against each.
