@@ -1,24 +1,30 @@
 ---
 name: network-netcat
-description: >
-  Network utility for reading and writing data across TCP/UDP connections, port scanning, file
-  transfers, and backdoor communication channels. Use when: (1) Testing network connectivity and
-  port availability, (2) Creating reverse shells and bind shells for authorized penetration testing,
-  (3) Transferring files between systems in restricted environments, (4) Banner grabbing and service
-  enumeration, (5) Establishing covert communication channels, (6) Testing firewall rules and network
-  segmentation.
-version: 0.1.0
-maintainer: sirappsec@gmail.com
-category: offsec
-tags: [networking, netcat, reverse-shell, file-transfer, port-scanning, banner-grabbing]
-frameworks: [MITRE-ATT&CK, PTES]
-dependencies:
-  packages: [netcat, ncat]
-references:
+description: 'Network utility for reading and writing data across TCP/UDP connections, port scanning, file transfers, and backdoor communication channels. Use when: (1) Testing network connectivity and port availability, (2) Creating reverse shells and bind shells for authorized penetration testing, (3) Transferring files between systems in restricted environments, (4) Banner grabbing and service enumeration, (5) Establishing covert communication channels, (6) Testing firewall rules and network segmentation.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: sirappsec@gmail.com
+  category: offsec
+  tags:
+  - networking
+  - netcat
+  - reverse-shell
+  - file-transfer
+  - port-scanning
+  - banner-grabbing
+  frameworks:
+  - MITRE-ATT&CK
+  - PTES
+  dependencies:
+    packages:
+    - netcat
+    - ncat
+  references:
   - https://nmap.org/ncat/guide/index.html
   - https://attack.mitre.org/techniques/T1059/
 ---
-
 # Netcat Network Utility
 
 ## Overview

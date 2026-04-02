@@ -1,10 +1,11 @@
 ---
 name: github-evidence-kit
 description: Generate, export, load, and verify forensic evidence from GitHub sources. Use when creating verifiable evidence objects from GitHub API, GH Archive, Wayback Machine, local git repositories, or security vendor reports. Handles evidence storage, querying, and re-verification against original sources.
-user-invocable: false
-version: 2.0
-author: mbrg
-tags:
+metadata:
+  user-invocable: false
+  version: 2.0
+  author: mbrg
+  tags:
   - github
   - forensics
   - osint
@@ -12,7 +13,6 @@ tags:
   - verification
   - git
 ---
-
 # GH Evidence Kit
 
 **Purpose**: Create, store, and verify forensic evidence from GitHub-related public sources and local git repositories.

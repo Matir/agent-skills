@@ -1,20 +1,14 @@
 ---
 name: skill-extractor
-description: >-
-  Extracts reusable skills from work sessions. Use when: (1) a non-obvious
-  problem was solved worth preserving, (2) a pattern was discovered that would
-  help future sessions, (3) a workaround or debugging technique needs
-  documentation. Manual invocation only via /skill-extractor command - no
-  automatic triggers or hooks.
+description: 'Extracts reusable skills from work sessions. Use when: (1) a non-obvious problem was solved worth preserving, (2) a pattern was discovered that would help future sessions, (3) a workaround or debugging technique needs documentation. Manual invocation only via /skill-extractor command - no automatic triggers or hooks.'
 allowed-tools:
-  - Read
-  - Write
-  - Glob
-  - Grep
-  - WebSearch
-  - AskUserQuestion
+- Read
+- Write
+- Glob
+- Grep
+- WebSearch
+- AskUserQuestion
 ---
-
 # Skill Extractor
 
 Extracts reusable knowledge from work sessions and saves it as a Claude Code skill.

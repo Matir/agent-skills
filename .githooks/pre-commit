@@ -4,8 +4,11 @@ set -euo pipefail
 # This is a githook dispatcher. It runs all executable scripts in 
 # .githooks/$(basename "$0").d/
 
+# Find the root of the git repository
+GIT_ROOT=$(git rev-parse --show-toplevel)
+
 HOOK_NAME=$(basename "$0")
-HOOKS_DIR="$(dirname "$0")/${HOOK_NAME}.d"
+HOOKS_DIR="$GIT_ROOT/.githooks/${HOOK_NAME}.d"
 
 EXIT_CODE=0
 

@@ -1,28 +1,35 @@
 ---
 name: sast-semgrep
-description: >
-  Static application security testing (SAST) using Semgrep for vulnerability detection,
-  security code review, and secure coding guidance with OWASP and CWE framework mapping.
-  Use when: (1) Scanning code for security vulnerabilities across multiple languages,
-  (2) Performing security code reviews with pattern-based detection, (3) Integrating
-  SAST checks into CI/CD pipelines, (4) Providing remediation guidance with OWASP Top 10
-  and CWE mappings, (5) Creating custom security rules for organization-specific patterns,
-  (6) Analyzing dependencies for known vulnerabilities.
-version: 0.1.0
-maintainer: SirAppSec
-category: appsec
-tags: [sast, semgrep, vulnerability-scanning, code-security, owasp, cwe, security-review]
-frameworks: [OWASP, CWE, SANS-25]
-dependencies:
-  python: ">=3.8"
-  packages: [semgrep]
-  tools: [git]
-references:
+description: 'Static application security testing (SAST) using Semgrep for vulnerability detection, security code review, and secure coding guidance with OWASP and CWE framework mapping. Use when: (1) Scanning code for security vulnerabilities across multiple languages, (2) Performing security code reviews with pattern-based detection, (3) Integrating SAST checks into CI/CD pipelines, (4) Providing remediation guidance with OWASP Top 10 and CWE mappings, (5) Creating custom security rules for organization-specific patterns, (6) Analyzing dependencies for known vulnerabilities.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: appsec
+  tags:
+  - sast
+  - semgrep
+  - vulnerability-scanning
+  - code-security
+  - owasp
+  - cwe
+  - security-review
+  frameworks:
+  - OWASP
+  - CWE
+  - SANS-25
+  dependencies:
+    python: '>=3.8'
+    packages:
+    - semgrep
+    tools:
+    - git
+  references:
   - https://semgrep.dev/docs/
   - https://owasp.org/Top10/
   - https://cwe.mitre.org/
 ---
-
 # SAST with Semgrep
 
 ## Overview

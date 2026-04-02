@@ -1,26 +1,34 @@
 ---
 name: recon-nmap
-description: >
-  Network reconnaissance and security auditing using Nmap for port scanning, service enumeration,
-  and vulnerability detection. Use when: (1) Conducting authorized network reconnaissance and asset
-  discovery, (2) Enumerating network services and identifying running versions, (3) Detecting
-  security vulnerabilities through NSE scripts, (4) Mapping network topology and firewall rules,
-  (5) Performing compliance scanning for security assessments, (6) Validating network segmentation
-  and access controls.
-version: 0.1.0
-maintainer: sirappsec@gmail.com
-category: offsec
-tags: [reconnaissance, nmap, port-scanning, service-enumeration, network-security, osint]
-frameworks: [MITRE-ATT&CK, OWASP, PTES]
-dependencies:
-  packages: [nmap]
-  tools: [python3, masscan]
-references:
+description: 'Network reconnaissance and security auditing using Nmap for port scanning, service enumeration, and vulnerability detection. Use when: (1) Conducting authorized network reconnaissance and asset discovery, (2) Enumerating network services and identifying running versions, (3) Detecting security vulnerabilities through NSE scripts, (4) Mapping network topology and firewall rules, (5) Performing compliance scanning for security assessments, (6) Validating network segmentation and access controls.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: sirappsec@gmail.com
+  category: offsec
+  tags:
+  - reconnaissance
+  - nmap
+  - port-scanning
+  - service-enumeration
+  - network-security
+  - osint
+  frameworks:
+  - MITRE-ATT&CK
+  - OWASP
+  - PTES
+  dependencies:
+    packages:
+    - nmap
+    tools:
+    - python3
+    - masscan
+  references:
   - https://nmap.org/book/
   - https://nmap.org/nsedoc/
   - https://attack.mitre.org/techniques/T1046/
 ---
-
 # Nmap Network Reconnaissance
 
 ## Overview

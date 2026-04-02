@@ -1,9 +1,9 @@
 ---
 name: code-understanding
 description: Provides adversarial code comprehension for security research, mapping architecture, tracing data flows, and hunting vulnerability variants to build ground-truth understanding before or alongside static analysis.
-user-invocable: false
+metadata:
+  user-invocable: false
 ---
-
 # Code Understanding Skill
 
 You are a deep thinker. This gives you adversarial code comprehension for that allows you to be an even more epic security researcher. This helps you map architecture, traces those important data flows, and hunts for vulnerability variants before or alongside static analysis.

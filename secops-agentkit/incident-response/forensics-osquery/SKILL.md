@@ -1,29 +1,36 @@
 ---
 name: forensics-osquery
-description: >
-  SQL-powered forensic investigation and system interrogation using osquery to query
-  operating systems as relational databases. Enables rapid evidence collection, threat
-  hunting, and incident response across Linux, macOS, and Windows endpoints.
-  Use when: (1) Investigating security incidents and collecting forensic artifacts,
-  (2) Threat hunting across endpoints for suspicious activity, (3) Analyzing running
-  processes, network connections, and persistence mechanisms, (4) Collecting system
-  state during incident response, (5) Querying file hashes, user activity, and system
-  configuration for compromise indicators, (6) Building detection queries for continuous
-  monitoring with osqueryd.
-version: 0.1.0
-maintainer: SirAppSec
-category: incident-response
-tags: [forensics, osquery, incident-response, threat-hunting, endpoint-detection, dfir, live-forensics, sql]
-frameworks: [MITRE-ATT&CK, NIST]
-dependencies:
-  tools: [osquery]
-  platforms: [linux, macos, windows]
-references:
+description: 'SQL-powered forensic investigation and system interrogation using osquery to query operating systems as relational databases. Enables rapid evidence collection, threat hunting, and incident response across Linux, macOS, and Windows endpoints. Use when: (1) Investigating security incidents and collecting forensic artifacts, (2) Threat hunting across endpoints for suspicious activity, (3) Analyzing running processes, network connections, and persistence mechanisms, (4) Collecting system state during incident response, (5) Querying file hashes, user activity, and system configuration for compromise indicators, (6) Building detection queries for continuous monitoring with osqueryd.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: incident-response
+  tags:
+  - forensics
+  - osquery
+  - incident-response
+  - threat-hunting
+  - endpoint-detection
+  - dfir
+  - live-forensics
+  - sql
+  frameworks:
+  - MITRE-ATT&CK
+  - NIST
+  dependencies:
+    tools:
+    - osquery
+    platforms:
+    - linux
+    - macos
+    - windows
+  references:
   - https://github.com/osquery/osquery
   - https://osquery.io/
   - https://osquery.readthedocs.io/
 ---
-
 # osquery Forensics & Incident Response
 
 ## Overview

@@ -1,26 +1,39 @@
 ---
 name: reviewdog
-description: >
-  Automated code review and security linting integration for CI/CD pipelines using reviewdog.
-  Aggregates findings from multiple security and quality tools (SAST, linters, formatters) into
-  unified code review comments on pull requests. Use when: (1) Integrating security scanning
-  into code review workflows, (2) Automating security feedback on pull requests,
-  (3) Consolidating multiple tool outputs into actionable review comments, (4) Enforcing
-  secure coding standards in CI/CD pipelines, (5) Providing inline security annotations
-  during development.
-version: 0.1.0
-maintainer: asrour
-category: secsdlc
-tags: [code-review, ci-cd, automation, security-feedback, pull-request, linting, sast-integration]
-frameworks: [OWASP, CWE]
-dependencies:
-  tools: [reviewdog, git]
-  optional: [semgrep, bandit, hadolint, checkov, gitleaks, shellcheck, eslint]
-references:
+description: 'Automated code review and security linting integration for CI/CD pipelines using reviewdog. Aggregates findings from multiple security and quality tools (SAST, linters, formatters) into unified code review comments on pull requests. Use when: (1) Integrating security scanning into code review workflows, (2) Automating security feedback on pull requests, (3) Consolidating multiple tool outputs into actionable review comments, (4) Enforcing secure coding standards in CI/CD pipelines, (5) Providing inline security annotations during development.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: asrour
+  category: secsdlc
+  tags:
+  - code-review
+  - ci-cd
+  - automation
+  - security-feedback
+  - pull-request
+  - linting
+  - sast-integration
+  frameworks:
+  - OWASP
+  - CWE
+  dependencies:
+    tools:
+    - reviewdog
+    - git
+    optional:
+    - semgrep
+    - bandit
+    - hadolint
+    - checkov
+    - gitleaks
+    - shellcheck
+    - eslint
+  references:
   - https://github.com/reviewdog/reviewdog
   - https://reviewdog.github.io/
 ---
-
 # Reviewdog - Automated Security Code Review
 
 ## Overview

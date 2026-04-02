@@ -1,15 +1,13 @@
 ---
 name: security-awareness
-description: >
-  Teaches agents to recognize and avoid security threats during normal activity.
-  Covers phishing detection, credential protection, domain verification, and
-  social engineering defense. Use when building or operating agents that access
-  email, credential vaults, web browsers, or sensitive data.
+description: 'Teaches agents to recognize and avoid security threats during normal activity. Covers phishing detection, credential protection, domain verification, and social engineering defense. Use when building or operating agents that access email, credential vaults, web browsers, or sensitive data.
+
+  '
 allowed-tools:
-  - Read
-  - Grep
-  - Glob
-  - WebFetch
+- Read
+- Grep
+- Glob
+- WebFetch
 ---
 # Security Awareness Expert
 

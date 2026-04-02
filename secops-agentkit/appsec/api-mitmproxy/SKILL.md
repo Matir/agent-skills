@@ -1,26 +1,33 @@
 ---
 name: api-mitmproxy
-description: >
-  Interactive HTTPS proxy for API security testing with traffic interception, modification, and
-  replay capabilities. Supports HTTP/1, HTTP/2, HTTP/3, WebSockets, and TLS-protected protocols.
-  Includes Python scripting API for automation and multiple interfaces (console, web, CLI). Use when:
-  (1) Intercepting and analyzing API traffic for security testing, (2) Modifying HTTP/HTTPS requests
-  and responses to test API behavior, (3) Recording and replaying API traffic for testing, (4)
-  Debugging mobile app or thick client API communications, (5) Automating API security tests with
-  Python scripts, (6) Exporting traffic in HAR format for analysis.
-version: 0.1.0
-maintainer: SirAppSec
-category: appsec
-tags: [api-testing, proxy, https, intercepting-proxy, traffic-analysis, mitmproxy, har-export, websockets]
-frameworks: [OWASP]
-dependencies:
-  python: ">=3.9"
-  tools: [mitmproxy, mitmweb, mitmdump]
-references:
+description: 'Interactive HTTPS proxy for API security testing with traffic interception, modification, and replay capabilities. Supports HTTP/1, HTTP/2, HTTP/3, WebSockets, and TLS-protected protocols. Includes Python scripting API for automation and multiple interfaces (console, web, CLI). Use when: (1) Intercepting and analyzing API traffic for security testing, (2) Modifying HTTP/HTTPS requests and responses to test API behavior, (3) Recording and replaying API traffic for testing, (4) Debugging mobile app or thick client API communications, (5) Automating API security tests with Python scripts, (6) Exporting traffic in HAR format for analysis.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: appsec
+  tags:
+  - api-testing
+  - proxy
+  - https
+  - intercepting-proxy
+  - traffic-analysis
+  - mitmproxy
+  - har-export
+  - websockets
+  frameworks:
+  - OWASP
+  dependencies:
+    python: '>=3.9'
+    tools:
+    - mitmproxy
+    - mitmweb
+    - mitmdump
+  references:
   - https://mitmproxy.org/
   - https://docs.mitmproxy.org/
 ---
-
 # mitmproxy API Security Testing
 
 ## Overview

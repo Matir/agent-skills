@@ -1,25 +1,31 @@
 ---
 name: sbom-syft
-description: >
-  Software Bill of Materials (SBOM) generation using Syft for container images, filesystems, and
-  archives. Detects packages across 28+ ecosystems with multi-format output support (CycloneDX,
-  SPDX, syft-json). Enables vulnerability assessment, license compliance, and supply chain security.
-  Use when: (1) Generating SBOMs for container images or applications, (2) Analyzing software
-  dependencies and packages for vulnerability scanning, (3) Tracking license compliance across
-  dependencies, (4) Integrating SBOM generation into CI/CD for supply chain security, (5) Creating
-  signed SBOM attestations for software provenance.
-version: 0.1.0
-maintainer: SirAppSec
-category: secsdlc
-tags: [sbom, syft, supply-chain, dependencies, cyclonedx, spdx, vulnerability-management, license-compliance]
-frameworks: [NIST, OWASP]
-dependencies:
-  tools: [docker]
-references:
+description: 'Software Bill of Materials (SBOM) generation using Syft for container images, filesystems, and archives. Detects packages across 28+ ecosystems with multi-format output support (CycloneDX, SPDX, syft-json). Enables vulnerability assessment, license compliance, and supply chain security. Use when: (1) Generating SBOMs for container images or applications, (2) Analyzing software dependencies and packages for vulnerability scanning, (3) Tracking license compliance across dependencies, (4) Integrating SBOM generation into CI/CD for supply chain security, (5) Creating signed SBOM attestations for software provenance.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: secsdlc
+  tags:
+  - sbom
+  - syft
+  - supply-chain
+  - dependencies
+  - cyclonedx
+  - spdx
+  - vulnerability-management
+  - license-compliance
+  frameworks:
+  - NIST
+  - OWASP
+  dependencies:
+    tools:
+    - docker
+  references:
   - https://github.com/anchore/syft
   - https://anchore.com/sbom/
 ---
-
 # Syft SBOM Generator
 
 ## Overview

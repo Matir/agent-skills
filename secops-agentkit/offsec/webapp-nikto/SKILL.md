@@ -1,26 +1,32 @@
 ---
 name: webapp-nikto
-description: >
-  Web server vulnerability scanner for identifying security issues, misconfigurations, and outdated
-  software versions. Use when: (1) Conducting authorized web server security assessments, (2)
-  Identifying common web vulnerabilities and misconfigurations, (3) Detecting outdated server
-  software and known vulnerabilities, (4) Performing compliance scans for web server hardening,
-  (5) Enumerating web server information and enabled features, (6) Validating security controls
-  and patch levels.
-version: 0.1.0
-maintainer: sirappsec@gmail.com
-category: offsec
-tags: [web-security, vulnerability-scanner, nikto, server-security, web-assessment]
-frameworks: [OWASP, CWE, NIST]
-dependencies:
-  packages: [nikto]
-  tools: [perl]
-references:
+description: 'Web server vulnerability scanner for identifying security issues, misconfigurations, and outdated software versions. Use when: (1) Conducting authorized web server security assessments, (2) Identifying common web vulnerabilities and misconfigurations, (3) Detecting outdated server software and known vulnerabilities, (4) Performing compliance scans for web server hardening, (5) Enumerating web server information and enabled features, (6) Validating security controls and patch levels.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: sirappsec@gmail.com
+  category: offsec
+  tags:
+  - web-security
+  - vulnerability-scanner
+  - nikto
+  - server-security
+  - web-assessment
+  frameworks:
+  - OWASP
+  - CWE
+  - NIST
+  dependencies:
+    packages:
+    - nikto
+    tools:
+    - perl
+  references:
   - https://cirt.net/Nikto2
   - https://github.com/sullo/nikto
   - https://owasp.org/www-project-web-security-testing-guide/
 ---
-
 # Nikto Web Server Scanner
 
 ## Overview

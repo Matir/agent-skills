@@ -1,16 +1,12 @@
 ---
 name: ghidra-headless
-description: >-
-  Reverse engineers binaries using Ghidra's headless analyzer. Use when
-  decompiling executables, extracting functions, strings, symbols, or
-  analyzing call graphs from compiled binaries without the Ghidra GUI.
+description: Reverse engineers binaries using Ghidra's headless analyzer. Use when decompiling executables, extracting functions, strings, symbols, or analyzing call graphs from compiled binaries without the Ghidra GUI.
 allowed-tools:
-  - Bash
-  - Read
-  - Grep
-  - Glob
+- Bash
+- Read
+- Grep
+- Glob
 ---
-
 # Ghidra Headless Analysis
 
 Perform automated reverse engineering using Ghidra's `analyzeHeadless` tool.

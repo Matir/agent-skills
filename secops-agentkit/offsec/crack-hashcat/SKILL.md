@@ -1,25 +1,32 @@
 ---
 name: crack-hashcat
-description: >
-  Advanced password recovery and hash cracking tool supporting multiple algorithms and attack modes.
-  Use when: (1) Performing authorized password auditing and security assessments, (2) Recovering
-  passwords from captured hashes in forensic investigations, (3) Testing password policy strength
-  and complexity, (4) Validating encryption implementations, (5) Conducting security research on
-  cryptographic hash functions, (6) Demonstrating password weakness in penetration testing reports.
-version: 0.1.0
-maintainer: sirappsec@gmail.com
-category: offsec
-tags: [password-cracking, hashcat, forensics, password-audit, cryptography]
-frameworks: [MITRE-ATT&CK, NIST]
-dependencies:
-  packages: [hashcat]
-  tools: [opencl, cuda]
-references:
+description: 'Advanced password recovery and hash cracking tool supporting multiple algorithms and attack modes. Use when: (1) Performing authorized password auditing and security assessments, (2) Recovering passwords from captured hashes in forensic investigations, (3) Testing password policy strength and complexity, (4) Validating encryption implementations, (5) Conducting security research on cryptographic hash functions, (6) Demonstrating password weakness in penetration testing reports.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: sirappsec@gmail.com
+  category: offsec
+  tags:
+  - password-cracking
+  - hashcat
+  - forensics
+  - password-audit
+  - cryptography
+  frameworks:
+  - MITRE-ATT&CK
+  - NIST
+  dependencies:
+    packages:
+    - hashcat
+    tools:
+    - opencl
+    - cuda
+  references:
   - https://hashcat.net/wiki/
   - https://hashcat.net/hashcat/
   - https://attack.mitre.org/techniques/T1110/
 ---
-
 # Hashcat Password Recovery
 
 ## Overview

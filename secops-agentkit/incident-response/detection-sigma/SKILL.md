@@ -1,26 +1,36 @@
 ---
 name: detection-sigma
-description: >
-  Generic detection rule creation and management using Sigma, the universal SIEM rule format.
-  Sigma provides vendor-agnostic detection logic for log analysis across multiple SIEM platforms.
-  Use when: (1) Creating detection rules for security monitoring, (2) Converting rules between
-  SIEM platforms (Splunk, Elastic, QRadar, Sentinel), (3) Threat hunting with standardized
-  detection patterns, (4) Building detection-as-code pipelines, (5) Mapping detections to
-  MITRE ATT&CK tactics, (6) Implementing compliance-based monitoring rules.
-version: 0.1.0
-maintainer: SirAppSec
-category: incident-response
-tags: [sigma, detection, siem, threat-hunting, mitre-attack, detection-engineering, log-analysis]
-frameworks: [MITRE-ATT&CK, NIST, ISO27001]
-dependencies:
-  python: ">=3.8"
-  packages: [pysigma, pysigma-backend-splunk, pysigma-backend-elasticsearch, pyyaml]
-references:
+description: 'Generic detection rule creation and management using Sigma, the universal SIEM rule format. Sigma provides vendor-agnostic detection logic for log analysis across multiple SIEM platforms. Use when: (1) Creating detection rules for security monitoring, (2) Converting rules between SIEM platforms (Splunk, Elastic, QRadar, Sentinel), (3) Threat hunting with standardized detection patterns, (4) Building detection-as-code pipelines, (5) Mapping detections to MITRE ATT&CK tactics, (6) Implementing compliance-based monitoring rules.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: incident-response
+  tags:
+  - sigma
+  - detection
+  - siem
+  - threat-hunting
+  - mitre-attack
+  - detection-engineering
+  - log-analysis
+  frameworks:
+  - MITRE-ATT&CK
+  - NIST
+  - ISO27001
+  dependencies:
+    python: '>=3.8'
+    packages:
+    - pysigma
+    - pysigma-backend-splunk
+    - pysigma-backend-elasticsearch
+    - pyyaml
+  references:
   - https://github.com/SigmaHQ/sigma
   - https://github.com/SigmaHQ/pySigma
   - https://sigmahq.io/
 ---
-
 # Sigma Detection Engineering
 
 ## Overview

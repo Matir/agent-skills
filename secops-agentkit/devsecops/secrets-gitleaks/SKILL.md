@@ -1,26 +1,36 @@
 ---
 name: secrets-gitleaks
-description: >
-  Hardcoded secret detection and prevention in git repositories and codebases using Gitleaks.
-  Identifies passwords, API keys, tokens, and credentials through regex-based pattern matching
-  and entropy analysis. Use when: (1) Scanning repositories for exposed secrets and credentials,
-  (2) Implementing pre-commit hooks to prevent secret leakage, (3) Integrating secret detection
-  into CI/CD pipelines, (4) Auditing codebases for compliance violations (PCI-DSS, SOC2, GDPR),
-  (5) Establishing baseline secret detection and tracking new exposures, (6) Remediating
-  historical secret exposures in git history.
-version: 0.1.0
-maintainer: SirAppSec
-category: devsecops
-tags: [secrets, gitleaks, secret-scanning, devsecops, ci-cd, credentials, api-keys, compliance]
-frameworks: [OWASP, CWE, PCI-DSS, SOC2, GDPR]
-dependencies:
-  tools: [gitleaks, git]
-references:
+description: 'Hardcoded secret detection and prevention in git repositories and codebases using Gitleaks. Identifies passwords, API keys, tokens, and credentials through regex-based pattern matching and entropy analysis. Use when: (1) Scanning repositories for exposed secrets and credentials, (2) Implementing pre-commit hooks to prevent secret leakage, (3) Integrating secret detection into CI/CD pipelines, (4) Auditing codebases for compliance violations (PCI-DSS, SOC2, GDPR), (5) Establishing baseline secret detection and tracking new exposures, (6) Remediating historical secret exposures in git history.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: devsecops
+  tags:
+  - secrets
+  - gitleaks
+  - secret-scanning
+  - devsecops
+  - ci-cd
+  - credentials
+  - api-keys
+  - compliance
+  frameworks:
+  - OWASP
+  - CWE
+  - PCI-DSS
+  - SOC2
+  - GDPR
+  dependencies:
+    tools:
+    - gitleaks
+    - git
+  references:
   - https://github.com/gitleaks/gitleaks
   - https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/
   - https://cwe.mitre.org/data/definitions/798.html
 ---
-
 # Secrets Detection with Gitleaks
 
 ## Overview

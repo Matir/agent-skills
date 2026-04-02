@@ -1,9 +1,6 @@
 ---
 name: openai-develop-web-game
-description: 'Use when the agent is building or iterating on a web game (HTML/JS) and needs a reliable
-  development + testing loop: implement small changes, run a Playwright-based test script with short input
-  bursts and intentional pauses, inspect screenshots/text, and review console errors with render_game_to_text.
-  Originally from OpenAI''s curated skills catalog.'
+description: 'Use when the agent is building or iterating on a web game (HTML/JS) and needs a reliable development + testing loop: implement small changes, run a Playwright-based test script with short input bursts and intentional pauses, inspect screenshots/text, and review console errors with render_game_to_text. Originally from OpenAI''s curated skills catalog.'
 allowed-tools:
 - Bash
 - Read
@@ -12,7 +9,6 @@ allowed-tools:
 - Write
 - Edit
 ---
-
 # Develop Web Game
 
 Build games in small steps and validate every change. Treat each iteration as: implement → act → pause → observe → adjust.

@@ -1,26 +1,32 @@
 ---
 name: sast-bandit
-description: >
-  Python security vulnerability detection using Bandit SAST with CWE and OWASP mapping.
-  Use when: (1) Scanning Python code for security vulnerabilities and anti-patterns,
-  (2) Identifying hardcoded secrets, SQL injection, command injection, and insecure APIs,
-  (3) Generating security reports with severity classifications for CI/CD pipelines,
-  (4) Providing remediation guidance with security framework references,
-  (5) Enforcing Python security best practices in development workflows.
-version: 0.1.0
-maintainer: SirAppSec
-category: appsec
-tags: [sast, bandit, python, vulnerability-scanning, owasp, cwe, security-linting]
-frameworks: [OWASP, CWE]
-dependencies:
-  python: ">=3.8"
-  packages: [bandit]
-references:
+description: 'Python security vulnerability detection using Bandit SAST with CWE and OWASP mapping. Use when: (1) Scanning Python code for security vulnerabilities and anti-patterns, (2) Identifying hardcoded secrets, SQL injection, command injection, and insecure APIs, (3) Generating security reports with severity classifications for CI/CD pipelines, (4) Providing remediation guidance with security framework references, (5) Enforcing Python security best practices in development workflows.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: appsec
+  tags:
+  - sast
+  - bandit
+  - python
+  - vulnerability-scanning
+  - owasp
+  - cwe
+  - security-linting
+  frameworks:
+  - OWASP
+  - CWE
+  dependencies:
+    python: '>=3.8'
+    packages:
+    - bandit
+  references:
   - https://github.com/PyCQA/bandit
   - https://bandit.readthedocs.io/
   - https://owasp.org/www-project-top-ten/
 ---
-
 # Bandit Python SAST
 
 ## Overview

@@ -1,24 +1,32 @@
 ---
 name: webapp-sqlmap
-description: >
-  Automated SQL injection detection and exploitation tool for web application security testing.
-  Use when: (1) Testing web applications for SQL injection vulnerabilities in authorized assessments,
-  (2) Exploiting SQL injection flaws to demonstrate impact, (3) Extracting database information for
-  security validation, (4) Bypassing authentication mechanisms through SQL injection, (5) Identifying
-  vulnerable parameters in web requests, (6) Automating database enumeration and data extraction.
-version: 0.1.0
-maintainer: sirappsec@gmail.com
-category: offsec
-tags: [sqli, sql-injection, webapp, database-security, exploitation, sqlmap]
-frameworks: [OWASP, CWE, MITRE-ATT&CK]
-dependencies:
-  packages: [sqlmap, python3]
-references:
+description: 'Automated SQL injection detection and exploitation tool for web application security testing. Use when: (1) Testing web applications for SQL injection vulnerabilities in authorized assessments, (2) Exploiting SQL injection flaws to demonstrate impact, (3) Extracting database information for security validation, (4) Bypassing authentication mechanisms through SQL injection, (5) Identifying vulnerable parameters in web requests, (6) Automating database enumeration and data extraction.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: sirappsec@gmail.com
+  category: offsec
+  tags:
+  - sqli
+  - sql-injection
+  - webapp
+  - database-security
+  - exploitation
+  - sqlmap
+  frameworks:
+  - OWASP
+  - CWE
+  - MITRE-ATT&CK
+  dependencies:
+    packages:
+    - sqlmap
+    - python3
+  references:
   - https://sqlmap.org/
   - https://owasp.org/www-community/attacks/SQL_Injection
   - https://cwe.mitre.org/data/definitions/89.html
 ---
-
 # SQLMap - Automated SQL Injection Tool
 
 ## Overview

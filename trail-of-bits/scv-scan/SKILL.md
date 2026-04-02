@@ -1,15 +1,14 @@
 ---
 name: scv-scan
-description: "Audits Solidity codebases for smart contract vulnerabilities using a four-phase workflow (cheatsheet loading, codebase sweep, deep validation, reporting) covering 36 vulnerability classes. Use when auditing Solidity contracts for security issues, performing smart contract vulnerability scans, or reviewing Solidity code for common exploit patterns."
+description: Audits Solidity codebases for smart contract vulnerabilities using a four-phase workflow (cheatsheet loading, codebase sweep, deep validation, reporting) covering 36 vulnerability classes. Use when auditing Solidity contracts for security issues, performing smart contract vulnerability scans, or reviewing Solidity code for common exploit patterns.
 allowed-tools:
-  - Read
-  - Grep
-  - Glob
-  - Bash
-  - Write
-  - Task
+- Read
+- Grep
+- Glob
+- Bash
+- Write
+- Task
 ---
-
 # Smart Contract Vulnerability Auditor
 
 Systematically audit a Solidity codebase for vulnerabilities using a four-phase approach that balances thoroughness with efficiency.

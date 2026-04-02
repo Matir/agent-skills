@@ -1,23 +1,16 @@
 ---
 name: x-research
-description: >
-  Searches X/Twitter for real-time perspectives, dev discussions, product feedback,
-  breaking news, and expert opinions using the X API v2. Provides search with
-  engagement sorting, user profiles, thread fetching, watchlists, and result caching.
-  Use when: (1) user says "x research", "search x for", "search twitter for",
-  "what are people saying about", "what's twitter saying", "check x for", "x search",
-  (2) user needs recent X discourse on a topic (library releases, API changes, product
-  launches, industry events), (3) user wants to find what devs/experts/community thinks
-  about a topic. NOT for: posting tweets or account management.
-allowed-tools:
-  - Bash
-  - Read
-  - Grep
-  - Glob
-  - Write
-  - WebFetch
----
+description: 'Searches X/Twitter for real-time perspectives, dev discussions, product feedback, breaking news, and expert opinions using the X API v2. Provides search with engagement sorting, user profiles, thread fetching, watchlists, and result caching. Use when: (1) user says "x research", "search x for", "search twitter for", "what are people saying about", "what''s twitter saying", "check x for", "x search", (2) user needs recent X discourse on a topic (library releases, API changes, product launches, industry events), (3) user wants to find what devs/experts/community thinks about a topic. NOT for: posting tweets or account management.
 
+  '
+allowed-tools:
+- Bash
+- Read
+- Grep
+- Glob
+- Write
+- WebFetch
+---
 # X Research
 
 Agentic research over X/Twitter. Decompose research questions into targeted searches,

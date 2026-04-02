@@ -1,8 +1,6 @@
 ---
 name: openai-spreadsheet
-description: Use when tasks involve creating, editing, analyzing, or formatting spreadsheets (`.xlsx`,
-  `.csv`, `.tsv`) using Python (`openpyxl`, `pandas`), especially when formulas, references, and formatting
-  need to be preserved and verified. Originally from OpenAI's curated skills catalog.
+description: Use when tasks involve creating, editing, analyzing, or formatting spreadsheets (`.xlsx`, `.csv`, `.tsv`) using Python (`openpyxl`, `pandas`), especially when formulas, references, and formatting need to be preserved and verified. Originally from OpenAI's curated skills catalog.
 allowed-tools:
 - Bash
 - Read
@@ -11,7 +9,6 @@ allowed-tools:
 - Write
 - Edit
 ---
-
 # Spreadsheet Skill (Create, Edit, Analyze, Visualize)
 
 ## When to use

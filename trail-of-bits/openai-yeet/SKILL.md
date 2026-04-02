@@ -1,7 +1,6 @@
 ---
 name: openai-yeet
-description: Use only when the user explicitly asks to stage, commit, push, and open a GitHub pull request
-  in one flow using the GitHub CLI (`gh`). Originally from OpenAI's curated skills catalog.
+description: Use only when the user explicitly asks to stage, commit, push, and open a GitHub pull request in one flow using the GitHub CLI (`gh`). Originally from OpenAI's curated skills catalog.
 allowed-tools:
 - Bash
 - Read
@@ -10,7 +9,6 @@ allowed-tools:
 - Write
 - Edit
 ---
-
 ## Prerequisites
 
 - Require GitHub CLI `gh`. Check `gh --version`. If missing, ask the user to install `gh` and stop.

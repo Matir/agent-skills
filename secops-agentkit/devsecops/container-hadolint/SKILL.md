@@ -1,26 +1,32 @@
 ---
 name: container-hadolint
-description: >
-  Dockerfile security linting and best practice validation using Hadolint with 100+ built-in
-  rules aligned to CIS Docker Benchmark. Use when: (1) Analyzing Dockerfiles for security
-  misconfigurations and anti-patterns, (2) Enforcing container image security best practices
-  in CI/CD pipelines, (3) Detecting hardcoded secrets and credentials in container builds,
-  (4) Validating compliance with CIS Docker Benchmark requirements, (5) Integrating shift-left
-  container security into developer workflows, (6) Providing remediation guidance for insecure
-  Dockerfile instructions.
-version: 0.1.0
-maintainer: SirAppSec
-category: devsecops
-tags: [docker, hadolint, dockerfile, container-security, cis-benchmark, linting, ci-cd]
-frameworks: [CIS, OWASP]
-dependencies:
-  tools: [hadolint, docker]
-references:
+description: 'Dockerfile security linting and best practice validation using Hadolint with 100+ built-in rules aligned to CIS Docker Benchmark. Use when: (1) Analyzing Dockerfiles for security misconfigurations and anti-patterns, (2) Enforcing container image security best practices in CI/CD pipelines, (3) Detecting hardcoded secrets and credentials in container builds, (4) Validating compliance with CIS Docker Benchmark requirements, (5) Integrating shift-left container security into developer workflows, (6) Providing remediation guidance for insecure Dockerfile instructions.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: devsecops
+  tags:
+  - docker
+  - hadolint
+  - dockerfile
+  - container-security
+  - cis-benchmark
+  - linting
+  - ci-cd
+  frameworks:
+  - CIS
+  - OWASP
+  dependencies:
+    tools:
+    - hadolint
+    - docker
+  references:
   - https://github.com/hadolint/hadolint
   - https://www.cisecurity.org/benchmark/docker
   - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 ---
-
 # Dockerfile Security Linting with Hadolint
 
 ## Overview

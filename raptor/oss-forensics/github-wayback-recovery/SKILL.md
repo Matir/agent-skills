@@ -1,10 +1,11 @@
 ---
 name: github-wayback-recovery
 description: Recover deleted GitHub content using the Wayback Machine and Archive.org APIs. Use when repositories, files, issues, PRs, or wiki pages have been deleted from GitHub but may persist in web archives. Covers CDX API queries, URL patterns, and systematic recovery workflows.
-user-invocable: false
-version: 1.0
-author: mbrg
-tags:
+metadata:
+  user-invocable: false
+  version: 1.0
+  author: mbrg
+  tags:
   - github
   - wayback
   - archive
@@ -12,7 +13,6 @@ tags:
   - forensics
   - recovery
 ---
-
 # GitHub Wayback Recovery
 
 **Purpose**: Recover deleted GitHub content (README files, issues, PRs, wiki pages, repository metadata) from the Internet Archive's Wayback Machine when content is no longer available on GitHub.

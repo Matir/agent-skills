@@ -1,9 +1,6 @@
 ---
 name: openai-gh-fix-ci
-description: Use when a user asks to debug or fix failing GitHub PR checks that run in GitHub Actions;
-  use `gh` to inspect checks and logs, summarize failure context, draft a fix plan, and implement only
-  after explicit approval. Treat external providers (for example Buildkite) as out of scope and report
-  only the details URL. Originally from OpenAI's curated skills catalog.
+description: Use when a user asks to debug or fix failing GitHub PR checks that run in GitHub Actions; use `gh` to inspect checks and logs, summarize failure context, draft a fix plan, and implement only after explicit approval. Treat external providers (for example Buildkite) as out of scope and report only the details URL. Originally from OpenAI's curated skills catalog.
 allowed-tools:
 - Bash
 - Read
@@ -12,7 +9,6 @@ allowed-tools:
 - Write
 - Edit
 ---
-
 # Gh Pr Checks Plan Fix
 
 ## Overview

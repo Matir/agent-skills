@@ -1,25 +1,34 @@
 ---
 name: dast-zap
-description: >
-  Dynamic application security testing (DAST) using OWASP ZAP (Zed Attack Proxy) with passive and active scanning,
-  API testing, and OWASP Top 10 vulnerability detection. Use when: (1) Performing runtime security testing of web
-  applications and APIs, (2) Detecting vulnerabilities like XSS, SQL injection, and authentication flaws in deployed
-  applications, (3) Automating security scans in CI/CD pipelines with Docker containers, (4) Conducting authenticated
-  testing with session management, (5) Generating security reports with OWASP and CWE mappings for compliance.
-version: 0.1.0
-maintainer: SirAppSec
-category: appsec
-tags: [dast, zap, web-security, owasp, vulnerability-scanning, api-testing, penetration-testing]
-frameworks: [OWASP, CWE]
-dependencies:
-  tools: [docker]
-  optional: [python3, java]
-references:
+description: 'Dynamic application security testing (DAST) using OWASP ZAP (Zed Attack Proxy) with passive and active scanning, API testing, and OWASP Top 10 vulnerability detection. Use when: (1) Performing runtime security testing of web applications and APIs, (2) Detecting vulnerabilities like XSS, SQL injection, and authentication flaws in deployed applications, (3) Automating security scans in CI/CD pipelines with Docker containers, (4) Conducting authenticated testing with session management, (5) Generating security reports with OWASP and CWE mappings for compliance.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: appsec
+  tags:
+  - dast
+  - zap
+  - web-security
+  - owasp
+  - vulnerability-scanning
+  - api-testing
+  - penetration-testing
+  frameworks:
+  - OWASP
+  - CWE
+  dependencies:
+    tools:
+    - docker
+    optional:
+    - python3
+    - java
+  references:
   - https://www.zaproxy.org/docs/
   - https://www.zaproxy.org/docs/docker/
   - https://www.zaproxy.org/docs/desktop/start/features/
 ---
-
 # DAST with OWASP ZAP
 
 ## Overview

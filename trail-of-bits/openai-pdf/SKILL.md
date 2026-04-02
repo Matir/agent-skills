@@ -1,8 +1,6 @@
 ---
 name: openai-pdf
-description: Use when tasks involve reading, creating, or reviewing PDF files where rendering and layout
-  matter; prefer visual checks by rendering pages (Poppler) and use Python tools such as `reportlab`,
-  `pdfplumber`, and `pypdf` for generation and extraction. Originally from OpenAI's curated skills catalog.
+description: Use when tasks involve reading, creating, or reviewing PDF files where rendering and layout matter; prefer visual checks by rendering pages (Poppler) and use Python tools such as `reportlab`, `pdfplumber`, and `pypdf` for generation and extraction. Originally from OpenAI's curated skills catalog.
 allowed-tools:
 - Bash
 - Read
@@ -11,7 +9,6 @@ allowed-tools:
 - Write
 - Edit
 ---
-
 # PDF Skill
 
 ## When to use

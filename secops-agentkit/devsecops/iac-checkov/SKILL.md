@@ -1,26 +1,36 @@
 ---
 name: iac-checkov
-description: >
-  Infrastructure as Code (IaC) security scanning using Checkov with 750+ built-in policies for Terraform,
-  CloudFormation, Kubernetes, Dockerfile, and ARM templates. Use when: (1) Scanning IaC files for security
-  misconfigurations and compliance violations, (2) Validating cloud infrastructure against CIS, PCI-DSS,
-  HIPAA, and SOC2 benchmarks, (3) Detecting secrets and hardcoded credentials in IaC, (4) Implementing
-  policy-as-code in CI/CD pipelines, (5) Generating compliance reports with remediation guidance for
-  cloud security posture management.
-version: 0.1.0
-maintainer: SirAppSec
-category: devsecops
-tags: [iac, checkov, terraform, kubernetes, cloudformation, compliance, policy-as-code, cloud-security]
-frameworks: [PCI-DSS, HIPAA, SOC2, NIST, GDPR]
-dependencies:
-  python: ">=3.8"
-  packages: [checkov]
-references:
+description: 'Infrastructure as Code (IaC) security scanning using Checkov with 750+ built-in policies for Terraform, CloudFormation, Kubernetes, Dockerfile, and ARM templates. Use when: (1) Scanning IaC files for security misconfigurations and compliance violations, (2) Validating cloud infrastructure against CIS, PCI-DSS, HIPAA, and SOC2 benchmarks, (3) Detecting secrets and hardcoded credentials in IaC, (4) Implementing policy-as-code in CI/CD pipelines, (5) Generating compliance reports with remediation guidance for cloud security posture management.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: devsecops
+  tags:
+  - iac
+  - checkov
+  - terraform
+  - kubernetes
+  - cloudformation
+  - compliance
+  - policy-as-code
+  - cloud-security
+  frameworks:
+  - PCI-DSS
+  - HIPAA
+  - SOC2
+  - NIST
+  - GDPR
+  dependencies:
+    python: '>=3.8'
+    packages:
+    - checkov
+  references:
   - https://www.checkov.io/
   - https://github.com/bridgecrewio/checkov
   - https://docs.paloaltonetworks.com/prisma/prisma-cloud
 ---
-
 # Infrastructure as Code Security with Checkov
 
 ## Overview

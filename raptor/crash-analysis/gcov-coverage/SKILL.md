@@ -1,15 +1,15 @@
 ---
-name: Code Coverage with gcov
+name: gcov-coverage
 description: Add gcov code coverage instrumentation to C/C++ projects
-user-invocable: false
-version: 1.0
-author: Claude
-tags:
+metadata:
+  user-invocable: false
+  version: 1.0
+  author: Claude
+  tags:
   - coverage
   - gcov
   - testing
 ---
-
 # Code Coverage with gcov
 
 ## Purpose
@@ -93,7 +93,7 @@ endif()
 
 ## Metrics
 - **Line coverage**: Executed lines / total lines
-- **Branch coverage**: Taken branches / total branches  
+- **Branch coverage**: Taken branches / total branches
 - **Function coverage**: Called functions / total functions
 
 Target: 80%+ line coverage, 70%+ branch coverage

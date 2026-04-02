@@ -1,26 +1,33 @@
 ---
 name: container-grype
-description: >
-  Container vulnerability scanning and dependency risk assessment using Grype with CVSS severity
-  ratings, EPSS exploit probability, and CISA KEV indicators. Use when: (1) Scanning container
-  images and filesystems for known vulnerabilities, (2) Integrating vulnerability scanning into
-  CI/CD pipelines with severity thresholds, (3) Analyzing SBOMs (Syft, SPDX, CycloneDX) for
-  security risks, (4) Prioritizing remediation based on threat metrics (CVSS, EPSS, KEV),
-  (5) Generating vulnerability reports in multiple formats (JSON, SARIF, CycloneDX) for security
-  toolchain integration.
-version: 0.1.0
-maintainer: SirAppSec
-category: devsecops
-tags: [container-security, vulnerability-scanning, sca, sbom, cvss, cve, docker, grype]
-frameworks: [CWE, NIST]
-dependencies:
-  tools: [grype, docker]
-references:
+description: 'Container vulnerability scanning and dependency risk assessment using Grype with CVSS severity ratings, EPSS exploit probability, and CISA KEV indicators. Use when: (1) Scanning container images and filesystems for known vulnerabilities, (2) Integrating vulnerability scanning into CI/CD pipelines with severity thresholds, (3) Analyzing SBOMs (Syft, SPDX, CycloneDX) for security risks, (4) Prioritizing remediation based on threat metrics (CVSS, EPSS, KEV), (5) Generating vulnerability reports in multiple formats (JSON, SARIF, CycloneDX) for security toolchain integration.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: devsecops
+  tags:
+  - container-security
+  - vulnerability-scanning
+  - sca
+  - sbom
+  - cvss
+  - cve
+  - docker
+  - grype
+  frameworks:
+  - CWE
+  - NIST
+  dependencies:
+    tools:
+    - grype
+    - docker
+  references:
   - https://github.com/anchore/grype
   - https://www.cve.org/
   - https://nvd.nist.gov/
 ---
-
 # Container Vulnerability Scanning with Grype
 
 ## Overview

@@ -1,16 +1,16 @@
 ---
 name: last30days
-description: "Researches a topic from the last 30 days on Reddit, X, and the web. Surfaces real community discussions with engagement metrics and synthesizes findings into actionable insights. Use when the user wants to know what people are saying about a topic right now."
-argument-hint: 'nano banana pro prompts, NVIDIA news, best AI video tools'
+description: Researches a topic from the last 30 days on Reddit, X, and the web. Surfaces real community discussions with engagement metrics and synthesizes findings into actionable insights. Use when the user wants to know what people are saying about a topic right now.
 allowed-tools:
-  - Bash
-  - Read
-  - Write
-  - AskUserQuestion
-  - WebSearch
-  - mcp__exa__web_search_exa
+- Bash
+- Read
+- Write
+- AskUserQuestion
+- WebSearch
+- mcp__exa__web_search_exa
+metadata:
+  argument-hint: nano banana pro prompts, NVIDIA news, best AI video tools
 ---
-
 # last30days: Research Any Topic from the Last 30 Days
 
 Research ANY topic across Reddit, X, and the web. Surface what people are actually discussing, recommending, and debating right now.

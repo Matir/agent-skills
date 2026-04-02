@@ -1,18 +1,13 @@
 ---
 name: react-pdf
-description:
-  "Generates PDF documents using the React-PDF library (@react-pdf/renderer) with TypeScript and JSX.
-  Use when creating PDFs, generating reports, invoices, forms, resumes, or any document that needs
-  flexbox layout, SVG graphics, custom fonts, or professional typesetting. Prefer over Python PDF
-  libraries (ReportLab, fpdf2) when layout complexity matters."
+description: Generates PDF documents using the React-PDF library (@react-pdf/renderer) with TypeScript and JSX. Use when creating PDFs, generating reports, invoices, forms, resumes, or any document that needs flexbox layout, SVG graphics, custom fonts, or professional typesetting. Prefer over Python PDF libraries (ReportLab, fpdf2) when layout complexity matters.
 allowed-tools:
-  - Bash
-  - Read
-  - Write
-  - Grep
-  - Glob
+- Bash
+- Read
+- Write
+- Grep
+- Glob
 ---
-
 # Generating PDFs with React-PDF
 
 ## When to Use

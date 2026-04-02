@@ -1,26 +1,43 @@
 ---
 name: policy-opa
-description: >
-  Policy-as-code enforcement and compliance validation using Open Policy Agent (OPA).
-  Use when: (1) Enforcing security and compliance policies across infrastructure and applications,
-  (2) Validating Kubernetes admission control policies, (3) Implementing policy-as-code for
-  compliance frameworks (SOC2, PCI-DSS, GDPR, HIPAA), (4) Testing and evaluating OPA Rego policies,
-  (5) Integrating policy checks into CI/CD pipelines, (6) Auditing configuration drift against
-  organizational security standards, (7) Implementing least-privilege access controls.
-version: 0.1.0
-maintainer: SirAppSec
-category: compliance
-tags: [opa, policy-as-code, compliance, rego, kubernetes, admission-control, soc2, gdpr, pci-dss, hipaa]
-frameworks: [SOC2, PCI-DSS, GDPR, HIPAA, NIST, ISO27001]
-dependencies:
-  tools: [opa, docker, kubectl]
-  packages: [jq, yq]
-references:
+description: 'Policy-as-code enforcement and compliance validation using Open Policy Agent (OPA). Use when: (1) Enforcing security and compliance policies across infrastructure and applications, (2) Validating Kubernetes admission control policies, (3) Implementing policy-as-code for compliance frameworks (SOC2, PCI-DSS, GDPR, HIPAA), (4) Testing and evaluating OPA Rego policies, (5) Integrating policy checks into CI/CD pipelines, (6) Auditing configuration drift against organizational security standards, (7) Implementing least-privilege access controls.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: compliance
+  tags:
+  - opa
+  - policy-as-code
+  - compliance
+  - rego
+  - kubernetes
+  - admission-control
+  - soc2
+  - gdpr
+  - pci-dss
+  - hipaa
+  frameworks:
+  - SOC2
+  - PCI-DSS
+  - GDPR
+  - HIPAA
+  - NIST
+  - ISO27001
+  dependencies:
+    tools:
+    - opa
+    - docker
+    - kubectl
+    packages:
+    - jq
+    - yq
+  references:
   - https://www.openpolicyagent.org/docs/latest/
   - https://www.openpolicyagent.org/docs/latest/policy-language/
   - https://www.conftest.dev/
 ---
-
 # Policy-as-Code with Open Policy Agent
 
 ## Overview

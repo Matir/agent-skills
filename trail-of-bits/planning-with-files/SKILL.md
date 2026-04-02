@@ -1,18 +1,13 @@
 ---
 name: planning-with-files
-description: >-
-  Implements file-based planning for complex multi-step tasks. Creates
-  task_plan.md, findings.md, and progress.md as persistent working memory. Use
-  when starting tasks requiring >5 tool calls, multi-phase projects, research,
-  or any work where losing track of goals and progress would be costly.
+description: Implements file-based planning for complex multi-step tasks. Creates task_plan.md, findings.md, and progress.md as persistent working memory. Use when starting tasks requiring >5 tool calls, multi-phase projects, research, or any work where losing track of goals and progress would be costly.
 allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
+- Read
+- Write
+- Edit
+- Glob
+- Grep
 ---
-
 # Planning with Files
 
 Use persistent markdown files as working memory on disk.

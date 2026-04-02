@@ -1,26 +1,32 @@
 ---
 name: ir-velociraptor
-description: >
-  Endpoint visibility, digital forensics, and incident response using Velociraptor
-  Query Language (VQL) for evidence collection and threat hunting at scale. Use when:
-  (1) Conducting forensic investigations across multiple endpoints, (2) Hunting for
-  indicators of compromise or suspicious activities, (3) Collecting endpoint telemetry
-  and artifacts for incident analysis, (4) Performing live response and evidence
-  preservation, (5) Monitoring endpoints for security events, (6) Creating custom
-  forensic artifacts for specific threat scenarios.
-version: 0.1.0
-maintainer: SirAppSec
-category: incident-response
-tags: [forensics, incident-response, endpoint-detection, threat-hunting, vql, dfir, live-response, evidence-collection]
-frameworks: [MITRE-ATT&CK, NIST]
-dependencies:
-  tools: [velociraptor]
-references:
+description: 'Endpoint visibility, digital forensics, and incident response using Velociraptor Query Language (VQL) for evidence collection and threat hunting at scale. Use when: (1) Conducting forensic investigations across multiple endpoints, (2) Hunting for indicators of compromise or suspicious activities, (3) Collecting endpoint telemetry and artifacts for incident analysis, (4) Performing live response and evidence preservation, (5) Monitoring endpoints for security events, (6) Creating custom forensic artifacts for specific threat scenarios.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: SirAppSec
+  category: incident-response
+  tags:
+  - forensics
+  - incident-response
+  - endpoint-detection
+  - threat-hunting
+  - vql
+  - dfir
+  - live-response
+  - evidence-collection
+  frameworks:
+  - MITRE-ATT&CK
+  - NIST
+  dependencies:
+    tools:
+    - velociraptor
+  references:
   - https://docs.velociraptor.app/
   - https://github.com/Velocidex/velociraptor
   - https://docs.velociraptor.app/artifact_references/
 ---
-
 # Velociraptor Incident Response
 
 ## Overview

@@ -1,26 +1,34 @@
 ---
 name: analysis-tshark
-description: >
-  Network protocol analyzer and packet capture tool for traffic analysis, security investigations,
-  and forensic examination using Wireshark's command-line interface. Use when: (1) Analyzing network
-  traffic for security incidents and malware detection, (2) Capturing and filtering packets for
-  forensic analysis, (3) Extracting credentials and sensitive data from network captures, (4)
-  Investigating network anomalies and attack patterns, (5) Validating encryption and security
-  controls, (6) Performing protocol analysis for vulnerability research.
-version: 0.1.0
-maintainer: sirappsec@gmail.com
-category: offsec
-tags: [packet-capture, network-analysis, forensics, tshark, wireshark, traffic-analysis]
-frameworks: [MITRE-ATT&CK, NIST]
-dependencies:
-  packages: [tshark, wireshark]
-  tools: [tcpdump, python3]
-references:
+description: 'Network protocol analyzer and packet capture tool for traffic analysis, security investigations, and forensic examination using Wireshark''s command-line interface. Use when: (1) Analyzing network traffic for security incidents and malware detection, (2) Capturing and filtering packets for forensic analysis, (3) Extracting credentials and sensitive data from network captures, (4) Investigating network anomalies and attack patterns, (5) Validating encryption and security controls, (6) Performing protocol analysis for vulnerability research.
+
+  '
+metadata:
+  version: 0.1.0
+  maintainer: sirappsec@gmail.com
+  category: offsec
+  tags:
+  - packet-capture
+  - network-analysis
+  - forensics
+  - tshark
+  - wireshark
+  - traffic-analysis
+  frameworks:
+  - MITRE-ATT&CK
+  - NIST
+  dependencies:
+    packages:
+    - tshark
+    - wireshark
+    tools:
+    - tcpdump
+    - python3
+  references:
   - https://www.wireshark.org/docs/man-pages/tshark.html
   - https://wiki.wireshark.org/DisplayFilters
   - https://attack.mitre.org/techniques/T1040/
 ---
-
 # TShark Network Protocol Analyzer
 
 ## Overview

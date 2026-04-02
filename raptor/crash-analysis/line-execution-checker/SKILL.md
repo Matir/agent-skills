@@ -1,15 +1,15 @@
 ---
-name: Line Execution Checker
+name: line-execution-checker
 description: Check if specific lines were executed using gcov data
-user-invocable: false
-version: 1.0
-author: Claude
-tags:
+metadata:
+  user-invocable: false
+  version: 1.0
+  author: Claude
+  tags:
   - coverage
   - gcov
   - testing
 ---
-
 # Line Execution Checker
 
 ## Purpose
