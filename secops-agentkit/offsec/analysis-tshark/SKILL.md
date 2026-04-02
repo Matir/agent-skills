@@ -142,218 +142,33 @@ sudo tshark -i eth0 -w capture.pcap -b filesize:100000 -b files:5
 
 ### 4. Capture Filters
 
-Apply BPF (Berkeley Packet Filter) during capture for efficiency:
+Apply BPF (Berkeley Packet Filter) during capture for efficiency. See **[references/filters.md](references/filters.md)** for detailed capture filters for HTTP, specific hosts, subnets, and protocol flags.
 
 ```bash
-# Capture only HTTP traffic
+# Example: Capture only HTTP traffic
 sudo tshark -i eth0 -f "tcp port 80"
-
-# Capture specific host
-sudo tshark -i eth0 -f "host 192.168.1.100"
-
-# Capture subnet
-sudo tshark -i eth0 -f "net 192.168.1.0/24"
-
-# Capture multiple ports
-sudo tshark -i eth0 -f "tcp port 80 or tcp port 443"
-
-# Exclude specific traffic
-sudo tshark -i eth0 -f "not port 22"
-
-# Capture SYN packets only
-sudo tshark -i eth0 -f "tcp[tcpflags] & tcp-syn != 0"
 ```
-
-**Common capture filters**:
-- `host <ip>`: Traffic to/from IP
-- `net <cidr>`: Traffic to/from network
-- `port <port>`: Specific port
-- `tcp|udp|icmp`: Protocol type
-- `src|dst`: Direction filter
-- `and|or|not`: Logical operators
 
 ### 5. Display Filters
 
-Analyze captured traffic with Wireshark display filters:
+Analyze captured traffic with Wireshark display filters. See **[references/filters.md](references/filters.md)** for advanced display filters for HTTP POST, SMB file transfers, suspicious User-Agents, and beaconing detection.
 
 ```bash
-# HTTP requests only
+# Example: HTTP requests only
 tshark -r capture.pcap -Y "http.request"
-
-# HTTP responses
-tshark -r capture.pcap -Y "http.response"
-
-# DNS queries
-tshark -r capture.pcap -Y "dns.flags.response == 0"
-
-# TLS handshakes
-tshark -r capture.pcap -Y "tls.handshake.type == 1"
-
-# Suspicious traffic patterns
-tshark -r capture.pcap -Y "tcp.flags.syn==1 and tcp.flags.ack==0"
-
-# Failed connections
-tshark -r capture.pcap -Y "tcp.flags.reset==1"
-```
-
-**Advanced display filters**:
-
-```bash
-# HTTP POST requests with credentials
-tshark -r capture.pcap -Y "http.request.method == POST and (http contains \"password\" or http contains \"username\")"
-
-# SMB file transfers
-tshark -r capture.pcap -Y "smb2.cmd == 8 or smb2.cmd == 9"
-
-# Suspicious User-Agents
-tshark -r capture.pcap -Y "http.user_agent contains \"python\" or http.user_agent contains \"curl\""
-
-# Large data transfers
-tshark -r capture.pcap -Y "tcp.len > 1400"
-
-# Beaconing detection (periodic traffic)
-tshark -r capture.pcap -Y "http" -T fields -e frame.time_relative -e ip.dst
 ```
 
 ### 6. Protocol Analysis
 
-Analyze specific protocols:
-
-**HTTP/HTTPS Analysis**:
-
-```bash
-# Extract HTTP requests
-tshark -r capture.pcap -Y "http.request" -T fields -e ip.src -e http.host -e http.request.uri
-
-# Extract HTTP User-Agents
-tshark -r capture.pcap -Y "http.user_agent" -T fields -e ip.src -e http.user_agent
-
-# HTTP status codes
-tshark -r capture.pcap -Y "http.response" -T fields -e ip.src -e http.response.code
-
-# Extract HTTP cookies
-tshark -r capture.pcap -Y "http.cookie" -T fields -e ip.src -e http.cookie
-```
-
-**DNS Analysis**:
-
-```bash
-# DNS queries
-tshark -r capture.pcap -Y "dns.flags.response == 0" -T fields -e ip.src -e dns.qry.name
-
-# DNS responses
-tshark -r capture.pcap -Y "dns.flags.response == 1" -T fields -e dns.qry.name -e dns.a
-
-# DNS tunneling detection (long domain names)
-tshark -r capture.pcap -Y "dns" -T fields -e dns.qry.name | awk 'length > 50'
-
-# DNS query types
-tshark -r capture.pcap -Y "dns" -T fields -e dns.qry.type -e dns.qry.name
-```
-
-**TLS/SSL Analysis**:
-
-```bash
-# TLS handshakes
-tshark -r capture.pcap -Y "tls.handshake.type == 1" -T fields -e ip.src -e ip.dst -e tls.handshake.extensions_server_name
-
-# TLS certificates
-tshark -r capture.pcap -Y "tls.handshake.certificate" -T fields -e tls.handshake.certificate
-
-# SSL/TLS versions
-tshark -r capture.pcap -Y "tls" -T fields -e tls.record.version
-
-# Weak cipher suites
-tshark -r capture.pcap -Y "tls.handshake.ciphersuite" -T fields -e tls.handshake.ciphersuite
-```
-
-**SMB/CIFS Analysis**:
-
-```bash
-# SMB file access
-tshark -r capture.pcap -Y "smb2" -T fields -e ip.src -e smb2.filename
-
-# SMB authentication
-tshark -r capture.pcap -Y "ntlmssp" -T fields -e ip.src -e ntlmssp.auth.username
-
-# SMB commands
-tshark -r capture.pcap -Y "smb2" -T fields -e smb2.cmd
-```
+Perform deep dive analysis on specific protocols including HTTP/HTTPS, DNS, TLS/SSL, and SMB/CIFS. See **[references/protocols.md](references/protocols.md)** for field extraction and analysis techniques.
 
 ### 7. Credential Extraction
 
-Extract credentials from network traffic (authorized forensics only):
-
-**HTTP Basic Authentication**:
-
-```bash
-# Extract HTTP Basic Auth credentials
-tshark -r capture.pcap -Y "http.authbasic" -T fields -e ip.src -e http.authbasic
-
-# Decode Base64 credentials
-tshark -r capture.pcap -Y "http.authorization" -T fields -e http.authorization | base64 -d
-```
-
-**FTP Credentials**:
-
-```bash
-# Extract FTP usernames
-tshark -r capture.pcap -Y "ftp.request.command == USER" -T fields -e ip.src -e ftp.request.arg
-
-# Extract FTP passwords
-tshark -r capture.pcap -Y "ftp.request.command == PASS" -T fields -e ip.src -e ftp.request.arg
-```
-
-**NTLM/Kerberos**:
-
-```bash
-# Extract NTLM hashes
-tshark -r capture.pcap -Y "ntlmssp.auth.ntlmv2response" -T fields -e ntlmssp.auth.username -e ntlmssp.auth.domain -e ntlmssp.auth.ntlmv2response
-
-# Kerberos tickets
-tshark -r capture.pcap -Y "kerberos.CNameString" -T fields -e kerberos.CNameString -e kerberos.realm
-```
-
-**Email Credentials**:
-
-```bash
-# SMTP authentication
-tshark -r capture.pcap -Y "smtp.req.command == AUTH" -T fields -e ip.src
-
-# POP3 credentials
-tshark -r capture.pcap -Y "pop.request.command == USER or pop.request.command == PASS" -T fields -e pop.request.parameter
-
-# IMAP credentials
-tshark -r capture.pcap -Y "imap.request contains \"LOGIN\"" -T fields -e imap.request
-```
+Extract credentials from network traffic (HTTP Basic Auth, FTP, NTLM/Kerberos, Email). See **[references/extraction.md](references/extraction.md)** for forensic extraction patterns.
 
 ### 8. File Extraction
 
-Extract files from packet captures:
-
-```bash
-# Export HTTP objects
-tshark -r capture.pcap --export-objects http,extracted_http/
-
-# Export SMB objects
-tshark -r capture.pcap --export-objects smb,extracted_smb/
-
-# Export DICOM objects
-tshark -r capture.pcap --export-objects dicom,extracted_dicom/
-
-# Export IMF (email) objects
-tshark -r capture.pcap --export-objects imf,extracted_email/
-```
-
-**Manual file reconstruction**:
-
-```bash
-# Extract file data from HTTP response
-tshark -r capture.pcap -Y "http.response and http.content_type contains \"application/pdf\"" -T fields -e data.data | xxd -r -p > extracted_file.pdf
-
-# Reassemble TCP stream
-tshark -r capture.pcap -q -z follow,tcp,ascii,<stream-number>
-```
+Export files from packet captures (HTTP, SMB, DICOM, IMF). See **[references/extraction.md](references/extraction.md)** for export commands and manual file reconstruction.
 
 ### 9. Malware Detection
 
@@ -378,29 +193,11 @@ tshark -r capture.pcap -Y "http.response and (http.content_type contains \"appli
 
 ### 10. Statistics and Reporting
 
-Generate traffic statistics:
+Generate traffic statistics including protocol hierarchy, conversation stats, and endpoint analysis. See **[references/reporting.md](references/reporting.md)** for detailed statistics commands and reporting options.
 
 ```bash
-# Protocol hierarchy
+# Example: Protocol hierarchy
 tshark -r capture.pcap -q -z io,phs
-
-# Conversation statistics
-tshark -r capture.pcap -q -z conv,tcp
-tshark -r capture.pcap -q -z conv,udp
-tshark -r capture.pcap -q -z conv,ip
-
-# HTTP statistics
-tshark -r capture.pcap -q -z http,tree
-
-# DNS statistics
-tshark -r capture.pcap -q -z dns,tree
-
-# Endpoints
-tshark -r capture.pcap -q -z endpoints,tcp
-tshark -r capture.pcap -q -z endpoints,udp
-
-# Expert info (warnings/errors)
-tshark -r capture.pcap -q -z expert
 ```
 
 ## Security Considerations
@@ -442,182 +239,18 @@ Document all packet capture activities:
 
 ## Common Patterns
 
-### Pattern 1: Incident Response Investigation
+TShark is used across various security scenarios including incident response, malware analysis, and network forensics. See **[references/patterns.md](references/patterns.md)** for detailed patterns including:
+- **Incident Response**: Capture and analysis during active incidents.
+- **Malware Traffic Analysis**: Extracting C2 indicators and payloads.
+- **Credential Harvesting Detection**: Monitoring for unencrypted credential transmission.
+- **Network Forensics**: Conversation reconstruction and timeline analysis.
+- **Wireless Security**: Capturing and analyzing 802.11 traffic.
 
-```bash
-# Capture traffic during incident
-sudo tshark -i eth0 -w incident_$(date +%Y%m%d_%H%M%S).pcap -a duration:300
+## Integration & Troubleshooting
 
-# Analyze for lateral movement
-tshark -r incident.pcap -Y "smb2 or rdp or ssh" -T fields -e ip.src -e ip.dst
-
-# Identify C2 communication
-tshark -r incident.pcap -Y "http or dns" -T fields -e ip.dst -e http.host -e dns.qry.name
-
-# Extract IOCs
-tshark -r incident.pcap -Y "ip.dst" -T fields -e ip.dst | sort -u > ioc_ips.txt
-tshark -r incident.pcap -Y "dns.qry.name" -T fields -e dns.qry.name | sort -u > ioc_domains.txt
-```
-
-### Pattern 2: Malware Traffic Analysis
-
-```bash
-# Capture malware sandbox traffic
-sudo tshark -i eth0 -w malware_traffic.pcap
-
-# Extract C2 indicators
-tshark -r malware_traffic.pcap -Y "http.host" -T fields -e ip.src -e http.host -e http.user_agent
-
-# Identify DNS tunneling
-tshark -r malware_traffic.pcap -Y "dns" -T fields -e dns.qry.name | awk 'length > 50'
-
-# Extract downloaded payloads
-tshark -r malware_traffic.pcap --export-objects http,malware_artifacts/
-
-# Analyze encryption/encoding
-tshark -r malware_traffic.pcap -Y "http.request.method == POST" -T fields -e data.data
-```
-
-### Pattern 3: Credential Harvesting Detection
-
-```bash
-# Monitor for credential transmission
-sudo tshark -i eth0 -Y "(http.authorization or ftp or pop or imap) and not tls" -T fields -e ip.src -e ip.dst
-
-# Extract all HTTP POST data
-tshark -r capture.pcap -Y "http.request.method == POST" -T fields -e http.file_data > post_data.txt
-
-# Search for password keywords
-tshark -r capture.pcap -Y "http contains \"password\" or http contains \"passwd\"" -T fields -e ip.src -e http.request.uri
-
-# NTLM hash extraction
-tshark -r capture.pcap -Y "ntlmssp.auth.ntlmv2response" -T fields -e ntlmssp.auth.username -e ntlmssp.auth.domain -e ntlmssp.auth.ntlmv2response > ntlm_hashes.txt
-```
-
-### Pattern 4: Network Forensics
-
-```bash
-# Reconstruct HTTP conversation
-tshark -r capture.pcap -q -z follow,http,ascii,0
-
-# Timeline analysis
-tshark -r capture.pcap -T fields -e frame.time -e ip.src -e ip.dst -e tcp.dstport
-
-# Identify file transfers
-tshark -r capture.pcap -Y "http.content_type contains \"application/\" or ftp-data" -T fields -e frame.number -e http.content_type
-
-# Geolocation of connections (requires GeoIP)
-tshark -r capture.pcap -T fields -e ip.src -e ip.dst -e ip.geoip.src_country -e ip.geoip.dst_country
-```
-
-### Pattern 5: Wireless Security Assessment
-
-```bash
-# Capture wireless traffic (monitor mode required)
-sudo tshark -i mon0 -w wireless_capture.pcap
-
-# Identify wireless networks
-tshark -r wireless_capture.pcap -Y "wlan.fc.type_subtype == 0x08" -T fields -e wlan.ssid -e wlan.bssid
-
-# Detect deauth attacks
-tshark -r wireless_capture.pcap -Y "wlan.fc.type_subtype == 0x0c"
-
-# WPA handshake capture
-tshark -r wireless_capture.pcap -Y "eapol"
-
-# Client probing activity
-tshark -r wireless_capture.pcap -Y "wlan.fc.type_subtype == 0x04" -T fields -e wlan.sa -e wlan.ssid
-```
-
-## Integration Points
-
-### SIEM Integration
-
-Export packet analysis to SIEM platforms:
-
-```bash
-# Export to JSON for Splunk/ELK
-tshark -r capture.pcap -T ek > packets.json
-
-# Export specific fields in JSON
-tshark -r capture.pcap -Y "http" -T json -e ip.src -e ip.dst -e http.host -e http.request.uri
-
-# CSV export for analysis
-tshark -r capture.pcap -T fields -E separator=, -e frame.time -e ip.src -e ip.dst -e tcp.dstport > packets.csv
-```
-
-### Scripting and Automation
-
-```bash
-#!/bin/bash
-# continuous_monitor.sh - Continuous network monitoring
-
-INTERFACE="eth0"
-ALERT_FILTER="http contains \"cmd.exe\" or dns.qry.name contains \".tk\" or dns.qry.name contains \".xyz\""
-
-sudo tshark -i $INTERFACE -Y "$ALERT_FILTER" -T fields -e frame.time -e ip.src -e ip.dst -e http.host -e dns.qry.name | \
-while read line; do
-  echo "[ALERT] $(date): $line" | tee -a security_alerts.log
-  # Trigger incident response workflow
-  echo "$line" | mail -s "Security Alert" soc@company.com
-done
-```
-
-## Troubleshooting
-
-### Issue: "Permission denied" when capturing
-
-**Solutions**:
-```bash
-# Run with sudo
-sudo tshark -i eth0
-
-# Or add user to wireshark group (Linux)
-sudo usermod -a -G wireshark $USER
-sudo setcap cap_net_raw,cap_net_admin+eip /usr/bin/tshark
-
-# Logout and login for group changes to take effect
-```
-
-### Issue: "No interfaces found"
-
-**Solutions**:
-```bash
-# Verify tshark installation
-tshark --version
-
-# List interfaces with sudo
-sudo tshark -D
-
-# Check interface status
-ip link show
-ifconfig -a
-```
-
-### Issue: Capture file is huge
-
-**Solutions**:
-```bash
-# Use capture filters to reduce size
-sudo tshark -i eth0 -f "not port 22" -w capture.pcap
-
-# Use ring buffer
-sudo tshark -i eth0 -w capture.pcap -b filesize:100000 -b files:5
-
-# Limit packet size (snaplen)
-sudo tshark -i eth0 -s 128 -w capture.pcap
-```
-
-### Issue: Cannot decrypt TLS traffic
-
-**Solutions**:
-```bash
-# Provide SSL key log file (requires SSLKEYLOGFILE environment variable)
-tshark -r capture.pcap -o tls.keylog_file:sslkeys.log -Y "http"
-
-# Use pre-master secret
-tshark -r capture.pcap -o tls.keys_list:192.168.1.100,443,http,/path/to/server.key
-```
+For SIEM integration (JSON/CSV export), automation scripting, and troubleshooting common issues (permissions, huge files, TLS decryption), see the following resources:
+- **[references/reporting.md](references/reporting.md)**: SIEM integration and automation scripting.
+- **[references/troubleshooting.md](references/troubleshooting.md)**: Common issues and defensive considerations.
 
 ## Defensive Considerations
 
@@ -636,6 +269,17 @@ Detect packet capture activity:
 - Audit administrative access to network devices
 - Monitor for unusual outbound data transfers
 - Deploy network access control (802.1X)
+
+## Bundled Resources
+
+### References (`references/`)
+
+- **[filters.md](references/filters.md)** - Detailed capture and display filters for advanced traffic analysis.
+- **[protocols.md](references/protocols.md)** - Deep dive protocol analysis for HTTP, DNS, TLS, and SMB.
+- **[extraction.md](references/extraction.md)** - Forensic extraction techniques for credentials and files.
+- **[reporting.md](references/reporting.md)** - Statistics, SIEM integration, and automation patterns.
+- **[patterns.md](references/patterns.md)** - Common security investigation patterns (IR, malware, wireless).
+- **[troubleshooting.md](references/troubleshooting.md)** - Solutions for common issues and defensive considerations.
 
 ## References
 
