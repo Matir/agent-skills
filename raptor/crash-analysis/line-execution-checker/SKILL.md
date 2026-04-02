@@ -19,7 +19,7 @@ Fast tool to check if specific source lines were executed during test runs.
 
 ### Build
 ```bash
-g++ -O3 -std=c++17 line_checker.cpp -o line-checker
+g++ -O3 -std=c++17 assets/line_checker.cpp -o line-checker
 ```
 
 ### Usage
@@ -51,7 +51,7 @@ Coverage data must exist from prior test run with `--coverage` flag.
 
 ### Steps
 1. Verify `.gcda` files exist: `find . -name "*.gcda" -print -quit`
-2. Build tool if needed: `g++ -O3 -std=c++17 line_checker.cpp -o line-checker`
+2. Build tool if needed: `g++ -O3 -std=c++17 assets/line_checker.cpp -o line-checker`
 3. Run: `./line-checker file.c:X`
 4. Report result to user
 

@@ -29,8 +29,8 @@ metadata:
 ## Quick Start
 
 ```python
-from src.collectors import GitHubAPICollector, LocalGitCollector, GHArchiveCollector
-from src import EvidenceStore
+from assets.src.collectors import GitHubAPICollector, LocalGitCollector, GHArchiveCollector
+from assets.src import EvidenceStore
 
 # Create collectors for different sources
 github = GitHubAPICollector()
@@ -64,7 +64,7 @@ is_valid, errors = store.verify_all()
 Collects evidence from the live GitHub API.
 
 ```python
-from src.collectors import GitHubAPICollector
+from assets.src.collectors import GitHubAPICollector
 
 collector = GitHubAPICollector()
 ```
@@ -85,7 +85,7 @@ collector = GitHubAPICollector()
 Collects evidence from local git repositories. Essential for forensic analysis of cloned repos.
 
 ```python
-from src.collectors import LocalGitCollector
+from assets.src.collectors import LocalGitCollector
 
 collector = LocalGitCollector("/path/to/cloned/repo")
 
@@ -110,7 +110,7 @@ for commit in dangling:
 Collects and recovers evidence from GH Archive (BigQuery). Requires credentials.
 
 ```python
-from src.collectors import GHArchiveCollector
+from assets.src.collectors import GHArchiveCollector
 
 collector = GHArchiveCollector()
 
@@ -140,7 +140,7 @@ force_pushed = collector.recover_force_push("aws/aws-toolkit-vscode", "2025-07-1
 Collects archived snapshots from the Wayback Machine.
 
 ```python
-from src.collectors import WaybackCollector
+from assets.src.collectors import WaybackCollector
 
 collector = WaybackCollector()
 
@@ -166,7 +166,7 @@ content = collector.collect_snapshot_content(
 Verification is separated from data collection. Use `ConsistencyVerifier` to validate evidence against original sources.
 
 ```python
-from src.verifiers import ConsistencyVerifier
+from assets.src.verifiers import ConsistencyVerifier
 
 verifier = ConsistencyVerifier()
 
@@ -192,7 +192,7 @@ is_valid, errors = store.verify_all()
 Store, query, and export evidence collections.
 
 ```python
-from src import EvidenceStore
+from assets.src import EvidenceStore
 from datetime import datetime
 
 store = EvidenceStore()
@@ -223,7 +223,7 @@ is_valid, errors = store.verify_all()
 ## Loading Evidence from JSON
 
 ```python
-from src import load_evidence_from_json
+from assets.src import load_evidence_from_json
 import json
 
 with open("evidence.json") as f:
@@ -273,8 +273,8 @@ All 12 GitHub event types are supported:
 ## IOC Types
 
 ```python
-from src import EvidenceSource, IOCType
-from src.schema import IOC, VerificationInfo
+from assets.src import EvidenceSource, IOCType
+from assets.src.schema import IOC, VerificationInfo
 from pydantic import HttpUrl
 from datetime import datetime, timezone
 
@@ -301,8 +301,9 @@ Available IOC types: `COMMIT_SHA`, `FILE_PATH`, `FILE_HASH`, `CODE_SNIPPET`, `EM
 
 ```bash
 cd .claude/skills/github-forensics/github-evidence-kit
-uv pip install -r requirements.txt
-pytest tests/ -v --ignore=tests/test_integration.py
+uv pip install -r assets/requirements.txt
+export PYTHONPATH=$PYTHONPATH:$(pwd)/assets
+pytest assets/tests/ -v --ignore=assets/tests/test_integration.py
 ```
 
 ### Run Integration Tests (Optional)
@@ -311,10 +312,10 @@ Integration tests hit real external services (GitHub API, BigQuery, vendor URLs)
 
 ```bash
 # All integration tests
-pytest tests/test_integration.py -v -m integration
+pytest assets/tests/test_integration.py -v -m integration
 
 # Skip integration tests in CI
-pytest tests/ -v -m "not integration"
+pytest assets/tests/ -v -m "not integration"
 ```
 
 **Note**: GitHub API integration tests use 60 req/hr unauthenticated rate limit. BigQuery tests require credentials (see below).
@@ -352,7 +353,7 @@ The client auto-detects JSON content vs file path.
 ## Requirements
 
 ```bash
-uv pip install -r requirements.txt
+uv pip install -r assets/requirements.txt
 ```
 
 - `pydantic` - Schema validation

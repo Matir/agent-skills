@@ -18,21 +18,21 @@ Trace all function calls in C/C++ programs with per-thread logs and Perfetto vis
 
 ## Components
 
-### 1. Instrumentation Library (trace_instrument.c)
+### 1. Instrumentation Library (assets/trace_instrument.c)
 Captures function entry/exit, writes per-thread logs.
 
 **Build:**
 ```bash
-gcc -c -fPIC trace_instrument.c -o trace_instrument.o
+gcc -c -fPIC assets/trace_instrument.c -o trace_instrument.o
 gcc -shared trace_instrument.o -o libtrace.so -ldl -lpthread
 ```
 
-### 2. Perfetto Converter (trace_to_perfetto.cpp)
+### 2. Perfetto Converter (assets/trace_to_perfetto.cpp)
 Converts logs to Chrome JSON for Perfetto UI.
 
 **Build:**
 ```bash
-g++ -O3 -std=c++17 trace_to_perfetto.cpp -o trace_to_perfetto
+g++ -O3 -std=c++17 assets/trace_to_perfetto.cpp -o trace_to_perfetto
 ```
 
 ## Usage
@@ -77,7 +77,7 @@ export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
 ## When User Requests Tracing
 
 ### Steps
-1. Copy `trace_instrument.c` and `trace_to_perfetto.cpp` to project
+1. Copy `assets/trace_instrument.c` and `assets/trace_to_perfetto.cpp` to project
 2. Build instrumentation library
 3. Add `-finstrument-functions` to CFLAGS
 4. Add `-L. -ltrace -ldl -lpthread` to LDFLAGS
