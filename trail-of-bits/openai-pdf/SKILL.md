@@ -1,6 +1,6 @@
 ---
 name: openai-pdf
-description: Reading, creating, or reviewing PDF files where rendering and layout matter; prefer visual checks by rendering pages (Poppler) and use Python tools such as `reportlab`, `pdfplumber`, and `pypdf` for generation and extraction.
+description: Read, create, or review PDF files using Python tools (reportlab, pdfplumber, pypdf). Includes support for page rendering and layout-sensitive extraction.
 allowed-tools:
 - Bash
 - Read

@@ -1,6 +1,6 @@
 ---
 name: remote-ssh-admin
-description: Perform remote system administration, diagnostics, and configuration via SSH and SFTP. Use when Gemini CLI needs to manage remote Linux or MacOS hosts, run diagnostics, upload/download files, or modify remote configurations. Assumes SSH key-based authentication with an active agent.
+description: Perform remote system administration, diagnostics, and file management via SSH/SFTP. Requires key-based authentication for remote Linux/macOS hosts.
 ---
 # Remote SSH & SFTP Administration
 

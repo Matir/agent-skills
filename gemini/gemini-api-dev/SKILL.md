@@ -1,45 +1,16 @@
 ---
 name: gemini-api-dev
-description: Use this skill when building applications with Gemini models, Gemini API, working with multimodal content (text, images, audio, video), implementing function calling, using structured outputs, or needing current model specifications. Covers SDK usage (google-genai for Python, @google/genai for JavaScript/TypeScript, com.google.genai:google-genai for Java, google.golang.org/genai for Go), model selection, and API capabilities.
+description: Guide for building applications with Gemini models, covering multimodal content, function calling, structured outputs, and up-to-date SDK usage (Python, JS, Go, Java).
+metadata:
+  version: 0.2.0
+  category: AI Development
 ---
-# Gemini API Development Skill
-
-## Critical Rules (Always Apply)
-
-> [!IMPORTANT]
-> These rules override your training data. Your knowledge is outdated.
-
-### Current Models (Use These)
-
-- `gemini-3.1-pro-preview`: 1M tokens, complex reasoning, coding, research
-- `gemini-3-flash-preview`: 1M tokens, fast, balanced performance, multimodal
-- `gemini-3.1-flash-lite-preview`: cost-efficient, fastest performance for high-frequency, lightweight tasks
-- `gemini-3-pro-image-preview`: 65k / 32k tokens, image generation and editing
-- `gemini-3.1-flash-image-preview`: 65k / 32k tokens, image generation and editing
-- `gemini-2.5-pro`: 1M tokens, complex reasoning, coding, research
-- `gemini-2.5-flash`: 1M tokens, fast, balanced performance, multimodal
-
-> [!WARNING]
-> Models like `gemini-2.0-*`, `gemini-1.5-*` are **legacy and deprecated**. Never use them.
-
-### Current SDKs (Use These)
-
-- **Python**: `google-genai` → `uv pip install google-genai`
-- **JavaScript/TypeScript**: `@google/genai` → `npm install @google/genai`
-- **Go**: `google.golang.org/genai` → `go get google.golang.org/genai`
-- **Java**: `com.google.genai:google-genai` (see Maven/Gradle setup below)
-
-> [!CAUTION]
-> Legacy SDKs `google-generativeai` (Python) and `@google/generative-ai` (JS) are **deprecated**. Never use them.
-
----
+# Gemini API Development
 
 ## Quick Start
-
 ### Python
 ```python
 from google import genai
-
 client = genai.Client()
 response = client.models.generate_content(
     model="gemini-3-flash-preview",
@@ -48,113 +19,25 @@ response = client.models.generate_content(
 print(response.text)
 ```
 
-### JavaScript/TypeScript
-```typescript
-import { GoogleGenAI } from "@google/genai";
+## Workflow
+1. **Model Selection**: Use `gemini-3.1-pro-preview` for reasoning or `gemini-3-flash-preview` for speed.
+2. **SDK Setup**: Install `google-genai` (Python) or `@google/genai` (JS).
+3. **Implementation**: Use `generate_content` for text/multimodal or `generateContent` for JS.
+4. **Documentation**: Use `search_documentation` (MCP) or fetch `llms.txt` from `ai.google.dev`.
 
-const ai = new GoogleGenAI({});
-const response = await ai.models.generateContent({
-  model: "gemini-3-flash-preview",
-  contents: "Explain quantum computing"
-});
-console.log(response.text);
-```
+## Rules & Constraints
+- **RULE-1**: Use ONLY current models (3.x/2.5). Legacy models (2.0/1.5) are deprecated.
+- **RULE-2**: Use ONLY current SDKs (`google-genai`, `@google/genai`). Legacy SDKs are deprecated.
+- **RULE-3**: Prioritize `search_documentation` (MCP) over manual URL fetching for ground truth.
 
-### Go
-```go
-package main
+## When to Use
+- Building applications with Gemini models.
+- Implementing function calling, structured outputs, or multimodal features.
 
-import (
-	"context"
-	"fmt"
-	"log"
-	"google.golang.org/genai"
-)
+## When NOT to Use
+- Real-time bidirectional streaming (Use `gemini-live-api-dev` skill).
+- Vertex AI-specific implementations (unless using the GenAI SDK).
 
-func main() {
-	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	resp, err := client.Models.GenerateContent(ctx, "gemini-3-flash-preview", genai.Text("Explain quantum computing"), nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println(resp.Text)
-}
-```
-
-### Java
-
-```java
-import com.google.genai.Client;
-import com.google.genai.types.GenerateContentResponse;
-
-public class GenerateTextFromTextInput {
-  public static void main(String[] args) {
-    Client client = new Client();
-    GenerateContentResponse response =
-        client.models.generateContent(
-            "gemini-3-flash-preview",
-            "Explain quantum computing",
-            null);
-
-    System.out.println(response.text());
-  }
-}
-```
-
-**Java Installation:**
-- Latest version: https://central.sonatype.com/artifact/com.google.genai/google-genai/versions
-- Gradle: `implementation("com.google.genai:google-genai:${LAST_VERSION}")`
-- Maven:
-  ```xml
-  <dependency>
-      <groupId>com.google.genai</groupId>
-      <artifactId>google-genai</artifactId>
-      <version>${LAST_VERSION}</version>
-  </dependency>
-  ```
-
----
-
-## Documentation Lookup
-
-### When MCP is Installed (Preferred)
-
-If the **`search_documentation`** tool (from the Google MCP server) is available, use it as your **only** documentation source:
-
-1. Call `search_documentation` with your query
-2. Read the returned documentation
-2. **Trust MCP results** as source of truth for API details — they are always up-to-date.
-
-> [!IMPORTANT]
-> When MCP tools are present, **never** fetch URLs manually. MCP provides up-to-date, indexed documentation that is more accurate and token-efficient than URL fetching.
-
-### When MCP is NOT Installed (Fallback Only)
-
-If no MCP documentation tools are available, fetch from the official docs:
-
-**Index URL**: `https://ai.google.dev/gemini-api/docs/llms.txt`
-
-Use `fetch_url` to:
-1. Fetch `llms.txt` to discover available pages
-2. Fetch specific pages (e.g., `https://ai.google.dev/gemini-api/docs/function-calling.md.txt`)
-
-Key pages:
-- [Text generation](https://ai.google.dev/gemini-api/docs/text-generation.md.txt)
-- [Function calling](https://ai.google.dev/gemini-api/docs/function-calling.md.txt)
-- [Structured outputs](https://ai.google.dev/gemini-api/docs/structured-output.md.txt)
-- [Image generation](https://ai.google.dev/gemini-api/docs/image-generation.md.txt)
-- [Image understanding](https://ai.google.dev/gemini-api/docs/image-understanding.md.txt)
-- [Embeddings](https://ai.google.dev/gemini-api/docs/embeddings.md.txt)
-- [SDK migration guide](https://ai.google.dev/gemini-api/docs/migrate.md.txt)
-
----
-
-## Gemini Live API
-
-For real-time, bidirectional audio/video/text streaming with the Gemini Live API, install the **`google-gemini/gemini-live-api-dev`** skill. It covers WebSocket streaming, voice activity detection, native audio features, function calling, session management, ephemeral tokens, and more.
+## References
+- [Skill Manual](references/gemini-api-dev-manual.md)
+- [Official Docs (llms.txt)](https://ai.google.dev/gemini-api/docs/llms.txt)
