@@ -1,6 +1,6 @@
 ---
 name: analysis-tshark
-description: Network protocol analyzer and packet capture tool for traffic analysis and forensics.
+description: Network protocol analyzer (TShark/Wireshark) for traffic capture, packet analysis, and forensic examination.
 metadata:
   version: 0.2.0
   category: offsec

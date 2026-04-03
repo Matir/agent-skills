@@ -1,6 +1,6 @@
 ---
 name: gemini-api-dev
-description: Guide for building applications with Gemini models, covering multimodal content, function calling, structured outputs, and up-to-date SDK usage (Python, JS, Go, Java).
+description: Development reference for Gemini models. Provides specifications for multimodal tasks, function calling, and structured outputs.
 metadata:
   version: 0.2.0
   category: AI Development

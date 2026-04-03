@@ -1,6 +1,6 @@
 ---
 name: github-evidence-kit
-description: Generate, export, load, and verify forensic evidence from GitHub and local git sources.
+description: Forensic evidence kit for GitHub and local git repositories. Specializes in recovering dangling commits and verifying history integrity.
 metadata:
   version: 0.2.0
   category: oss-forensics

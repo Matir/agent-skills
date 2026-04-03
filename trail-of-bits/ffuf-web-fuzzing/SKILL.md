@@ -1,6 +1,6 @@
 ---
 name: ffuf-web-fuzzing
-description: Expert guidance for ffuf web fuzzing, including directory discovery, subdomain enumeration, and parameter fuzzing for authorized penetration testing.
+description: Expert penetration testing guidance for advanced ffuf scenarios, including authenticated fuzzing and complex parameter discovery.
 allowed-tools:
 - Bash
 - Read

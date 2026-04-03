@@ -1,6 +1,6 @@
 ---
 name: dast-ffuf
-description: Fast web fuzzer for DAST testing with directory enumeration, parameter fuzzing, and virtual host discovery.
+description: Dynamic Application Security Testing (DAST) using ffuf. Used for automated directory enumeration and virtual host discovery.
 metadata:
   version: 0.2.0
   category: appsec

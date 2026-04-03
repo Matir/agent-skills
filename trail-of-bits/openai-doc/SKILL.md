@@ -1,6 +1,6 @@
 ---
 name: openai-doc
-description: Use when the task involves reading, creating, or editing `.docx` documents, especially when formatting or layout fidelity matters; prefer `python-docx` plus the bundled `scripts/render_docx.py` for visual checks.
+description: Reads, creates, and edits .docx documents with high layout fidelity using python-docx and visual rendering checks.
 allowed-tools:
 - Bash
 - Read

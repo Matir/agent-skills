@@ -1,6 +1,6 @@
 ---
 name: openai-yeet
-description: Stage, commit, push, and open a GitHub pull request in one flow using the GitHub CLI (`gh`).
+description: Automates the git flow (stage, commit, push) and opens a GitHub pull request using the gh CLI.
 allowed-tools:
 - Bash
 - Read

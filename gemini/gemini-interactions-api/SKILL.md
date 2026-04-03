@@ -1,6 +1,6 @@
 ---
 name: gemini-interactions-api
-description: Unified interface for interacting with Gemini models and agents for text, chat, multimodal, and tool orchestration.
+description: Unified agent interface for executing Gemini model interactions, managing conversation state, and orchestrating tool calls.
 metadata:
   version: 0.2.0
   category: gemini

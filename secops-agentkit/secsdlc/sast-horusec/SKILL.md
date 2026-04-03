@@ -1,6 +1,6 @@
 ---
 name: sast-horusec
-description: Multi-language static application security testing using Horusec.
+description: Multi-language Static Application Security Testing (SAST) using the Horusec scanner.
 metadata:
   version: 0.2.0
   category: secsdlc

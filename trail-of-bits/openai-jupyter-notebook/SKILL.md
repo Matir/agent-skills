@@ -1,6 +1,6 @@
 ---
 name: openai-jupyter-notebook
-description: Create or edit Jupyter notebooks (`.ipynb`) for experiments, explorations, or tutorials; prefer the bundled templates and run the helper script `new_notebook.py` to generate a clean starting notebook.
+description: Creates and edits Jupyter notebooks (.ipynb) for experiments, data exploration, and tutorials using standardized templates.
 allowed-tools:
 - Bash
 - Read
