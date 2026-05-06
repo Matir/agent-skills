@@ -34,7 +34,8 @@ while IFS= read -r -d '' skill_md; do
         echo "Error: '$link_path' exists and is not a symlink" >&2
         exit 1
     else
-        echo "Creating symlink: $link_path -> $skill_dir"
-        ln -s "$skill_dir" "$link_path"
+        rel_target="./${skill_dir#$SCRIPT_DIR/}"
+        echo "Creating symlink: $link_path -> $rel_target"
+        ln -s "$rel_target" "$link_path"
     fi
 done < <(find "$SCRIPT_DIR" -mindepth 3 -name "SKILL.md" -print0)
