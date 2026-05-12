@@ -1,6 +1,6 @@
 ---
 name: x-research
-description: Searches X/Twitter for real-time developer discussions, product feedback, and breaking news using the X API. Supports engagement sorting, profile analysis, and thread fetching.
+description: Searches X/Twitter for real-time developer discussions, product feedback, and breaking news using the X API. Supports engagement sorting, profile analysis, and thread fetching. Only use this if the user explicitly mentions X or Twitter.
 allowed-tools:
 - Bash
 - Read
@@ -35,6 +35,7 @@ x-research search 'vulnerability CVE-2023-XXXXX'
 ## When NOT to Use
 - Historical data analysis beyond the API's lookback window.
 - Automated posting or engagement.
+- When the user has not explicitly requested X/Twitter.
 
 ## References
 - [Skill Manual](references/x-research-manual.md)
