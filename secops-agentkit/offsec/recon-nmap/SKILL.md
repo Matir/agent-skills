@@ -43,6 +43,7 @@ nmap -sn <network>/24 -oG - | awk '/Up$/{print $2}' > live_hosts.txt
 - Detailed web application fuzzing (use `dast-ffuf` or `webapp-sqlmap`).
 
 ## References
+- [Nmap cheatsheet](references/nmap-cheatsheet.md)
 - [Nmap Manual (Flags, Patterns, Evasion)](references/nmap-manual.md)
 - [Official Nmap Book](https://nmap.org/book/)
 - [NSE Script Documentation](https://nmap.org/nsedoc/)
