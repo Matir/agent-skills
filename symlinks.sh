@@ -61,7 +61,7 @@ if [ -n "$TARGET_ARG" ] && [ "$TARGET_DIR" != "$GIT_ROOT" ]; then
 fi
 
 log() { echo "$@"; }
-vlog() { [ "$VERBOSE" = true ] && echo "$@"; }
+vlog() { [ "$VERBOSE" = true ] && echo "$@"; return 0; }
 
 # Remove broken symlinks in the target directory
 while IFS= read -r -d '' link; do
@@ -86,12 +86,12 @@ while IFS= read -r -d '' skill_md; do
             # Resolve relative to TARGET_DIR
             target="$(cd "$TARGET_DIR" && cd "$target" 2>/dev/null && pwd)" || true
         fi
-        
+
         if [ "$target" = "$skill_dir" ]; then
             vlog "Symlink already correct: $link_path -> $target"
             continue
         fi
-        
+
         echo "Error: symlink '$link_path' already exists but points to '$target', expected '$skill_dir'" >&2
         exit 1
     elif [ -e "$link_path" ]; then
@@ -106,7 +106,7 @@ while IFS= read -r -d '' skill_md; do
             # For other directories, use absolute paths for stability
             rel_target="$skill_dir"
         fi
-        
+
         log "Creating symlink: $link_path -> $rel_target"
         [ "$DRY_RUN" = false ] && ln -s "$rel_target" "$link_path"
     fi
