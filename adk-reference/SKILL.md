@@ -1,3 +1,8 @@
+---
+name: adk-reference
+description: Using the Agent Develpment Kit for AI Agent Development. Use when
+  ADK is referenced in coding or reviewing an AI agent.
+---
 # Agent Development Kit (ADK) Reference Skill
 
 Expert guidance for building, evaluating, and deploying AI agents using the Google Agent Development Kit (ADK). This skill provides access to fragmented, task-specific documentation to ensure context efficiency while maintaining high-fidelity code generation.

@@ -1,7 +1,19 @@
 #!/bin/bash
+set -euo pipefail
 
 # Find the root of the git repository
 GIT_ROOT=$(git rev-parse --show-toplevel)
+
+# Determine how to run agentskills (direct binary or via uvx fallback)
+if command -v agentskills &> /dev/null; then
+  AGENTSKILLS_CMD=(agentskills)
+elif command -v uvx &> /dev/null; then
+  AGENTSKILLS_CMD=(uvx --from skills-ref agentskills)
+else
+  echo "Error: Neither 'agentskills' nor 'uvx' was found in PATH." >&2
+  echo "Please install agentskills or uv to run skill validation." >&2
+  exit 1
+fi
 
 # Find all directories containing a SKILL.md file and validate them
 failed_skills=()
@@ -10,13 +22,13 @@ failed_skills=()
 while read -r skill_dir; do
   # Redirect output to /dev/null for valid skills
   # agentskills validate returns 0 on success, 1 on failure
-  if ! agentskills validate "$skill_dir" > /dev/null 2>&1; then
+  if ! "${AGENTSKILLS_CMD[@]}" validate "$skill_dir" > /dev/null 2>&1; then
     echo "Validation failed for skill in: $skill_dir"
     # Run again without redirection to show the error
-    agentskills validate "$skill_dir"
+    "${AGENTSKILLS_CMD[@]}" validate "$skill_dir"
     failed_skills+=("$skill_dir")
   fi
-done < <(find "$GIT_ROOT" -name "SKILL.md" -type f -exec dirname {} \;)
+done < <(find "$GIT_ROOT" -name "SKILL.md" -type f ! -path "*/.*" -exec dirname {} \;)
 
 if [ ${#failed_skills[@]} -ne 0 ]; then
   exit 1

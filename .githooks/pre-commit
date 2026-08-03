@@ -13,20 +13,13 @@ HOOKS_DIR="$GIT_ROOT/.githooks/${HOOK_NAME}.d"
 EXIT_CODE=0
 
 if [ -d "$HOOKS_DIR" ]; then
-    # We use a temp file to track if any hook fails across the subshell
-    FAILURE_FILE=$(mktemp)
-    echo "0" > "$FAILURE_FILE"
-
-    find "$HOOKS_DIR" -maxdepth 1 -type f -executable | while read -r hook; do
-        if ! "$hook"; then
-            echo "1" > "$FAILURE_FILE"
+    while read -r hook; do
+        if [ -x "$hook" ]; then
+            if ! "$hook"; then
+                EXIT_CODE=1
+            fi
         fi
-    done
-
-    if [ "$(cat "$FAILURE_FILE")" -eq 1 ]; then
-        EXIT_CODE=1
-    fi
-    rm -f "$FAILURE_FILE"
+    done < <(find "$HOOKS_DIR" -maxdepth 1 -type f)
 fi
 
 exit $EXIT_CODE
