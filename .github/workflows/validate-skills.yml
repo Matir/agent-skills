@@ -18,21 +18,66 @@ jobs:
 
       - name: Validate all skills
         run: |
-          # Find all directories containing a SKILL.md file and validate them
-          failed_skills=()
-
-          # Use process substitution to avoid subshell issues with the array
+          # Find all directories containing a SKILL.md file
+          skill_dirs=()
           while read -r skill_dir; do
+            skill_dirs+=("$skill_dir")
+          done < <(find . -name "SKILL.md" -type f ! -path "*/.*" -exec dirname {} \;)
+
+          # Check for duplicate directory basenames
+          has_duplicates=false
+          prev_bname=""
+          current_dirs=()
+          TAB="$(printf "\t")"
+
+          while IFS="$TAB" read -r bname skill_dir || [ -n "$bname" ]; do
+            if [ -z "$bname" ]; then continue; fi
+            if [ "$bname" = "$prev_bname" ]; then
+              current_dirs+=("$skill_dir")
+            else
+              if [ ${#current_dirs[@]} -gt 1 ]; then
+                if [ "$has_duplicates" = false ]; then
+                  echo "Error: Duplicate skill directory basenames found:" >&2
+                  has_duplicates=true
+                fi
+                echo "  Basename '$prev_bname' is used by multiple directories:" >&2
+                for d in "${current_dirs[@]}"; do
+                  echo "    - $d" >&2
+                  echo "::error file=$d/SKILL.md::Duplicate skill directory basename '$prev_bname'"
+                done
+              fi
+              prev_bname="$bname"
+              current_dirs=("$skill_dir")
+            fi
+          done < <(for d in "${skill_dirs[@]}"; do printf "%s\t%s\n" "$(basename "$d")" "$d"; done | sort -t "$TAB" -k1,1)
+
+          if [ ${#current_dirs[@]} -gt 1 ]; then
+            if [ "$has_duplicates" = false ]; then
+              echo "Error: Duplicate skill directory basenames found:" >&2
+              has_duplicates=true
+            fi
+            echo "  Basename '$prev_bname' is used by multiple directories:" >&2
+            for d in "${current_dirs[@]}"; do
+              echo "    - $d" >&2
+              echo "::error file=$d/SKILL.md::Duplicate skill directory basename '$prev_bname'"
+            done
+          fi
+
+          failed_skills=()
+          for skill_dir in "${skill_dirs[@]}"; do
             echo "------------------------------------------------------------"
             echo "Validating skill in: $skill_dir"
             if ! $HOME/.local/bin/uvx --from skills-ref agentskills validate "$skill_dir"; then
               echo "::error file=$skill_dir/SKILL.md::Validation failed for $skill_dir"
               failed_skills+=("$skill_dir")
             fi
-          done < <(find . -name "SKILL.md" -type f -exec dirname {} \;)
+          done
 
           echo "------------------------------------------------------------"
-          if [ ${#failed_skills[@]} -ne 0 ]; then
+          if [ "$has_duplicates" = true ]; then
+            echo "Validation failed due to duplicate skill directory basenames."
+            exit 1
+          elif [ ${#failed_skills[@]} -ne 0 ]; then
             echo "Validation failed for the following skills:"
             for skill in "${failed_skills[@]}"; do
               echo "  - $skill"

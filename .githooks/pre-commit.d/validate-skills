@@ -15,22 +15,60 @@ else
   exit 1
 fi
 
-# Find all directories containing a SKILL.md file and validate them
-failed_skills=()
-
-# Use find to list all directories with a SKILL.md file starting from the git root
+# Find all directories containing a SKILL.md file
+skill_dirs=()
 while read -r skill_dir; do
-  # Redirect output to /dev/null for valid skills
-  # agentskills validate returns 0 on success, 1 on failure
+  skill_dirs+=("$skill_dir")
+done < <(find "$GIT_ROOT" -name "SKILL.md" -type f ! -path "*/.*" -exec dirname {} \;)
+
+# Check for duplicate directory basenames
+has_duplicates=false
+prev_bname=""
+current_dirs=()
+TAB="$(printf "\t")"
+
+while IFS="$TAB" read -r bname skill_dir || [ -n "$bname" ]; do
+  if [ -z "$bname" ]; then continue; fi
+  if [ "$bname" = "$prev_bname" ]; then
+    current_dirs+=("$skill_dir")
+  else
+    if [ ${#current_dirs[@]} -gt 1 ]; then
+      if [ "$has_duplicates" = false ]; then
+        echo "Error: Duplicate skill directory basenames found:" >&2
+        has_duplicates=true
+      fi
+      echo "  Basename '$prev_bname' is used by multiple directories:" >&2
+      for d in "${current_dirs[@]}"; do
+        echo "    - $d" >&2
+      done
+    fi
+    prev_bname="$bname"
+    current_dirs=("$skill_dir")
+  fi
+done < <(for d in "${skill_dirs[@]}"; do printf "%s\t%s\n" "$(basename "$d")" "$d"; done | sort -t "$TAB" -k1,1)
+
+if [ ${#current_dirs[@]} -gt 1 ]; then
+  if [ "$has_duplicates" = false ]; then
+    echo "Error: Duplicate skill directory basenames found:" >&2
+    has_duplicates=true
+  fi
+  echo "  Basename '$prev_bname' is used by multiple directories:" >&2
+  for d in "${current_dirs[@]}"; do
+    echo "    - $d" >&2
+  done
+fi
+
+# Validate each skill directory
+failed_skills=()
+for skill_dir in "${skill_dirs[@]}"; do
   if ! "${AGENTSKILLS_CMD[@]}" validate "$skill_dir" > /dev/null 2>&1; then
     echo "Validation failed for skill in: $skill_dir"
-    # Run again without redirection to show the error
     "${AGENTSKILLS_CMD[@]}" validate "$skill_dir"
     failed_skills+=("$skill_dir")
   fi
-done < <(find "$GIT_ROOT" -name "SKILL.md" -type f ! -path "*/.*" -exec dirname {} \;)
+done
 
-if [ ${#failed_skills[@]} -ne 0 ]; then
+if [ "$has_duplicates" = true ] || [ ${#failed_skills[@]} -ne 0 ]; then
   exit 1
 else
   exit 0
