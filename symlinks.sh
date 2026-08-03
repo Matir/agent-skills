@@ -7,7 +7,7 @@ VERBOSE=false
 
 usage() {
     cat <<EOF
-Usage: $(basename "$0") [options] [target_directory]
+Usage: $(basename "$0") [options] [target_directory|harness]
 
 Symlinks skills to the specified target directory.
 
@@ -17,9 +17,11 @@ Options:
   -h, --help       Show this help message
 
 Arguments:
-  target_directory  Directory to place symlinks in. Defaults to script directory.
-                    If the target is not the git root, all skills are symlinked (depth 2+).
-                    Otherwise, only nested skills are symlinked (depth 3+).
+  target_directory|harness  Directory to place symlinks in, or an agent harness name
+                            (e.g., antigravity, claude, codex).
+                            Defaults to script directory.
+                            If the target is not the git root, all skills are symlinked (depth 2+).
+                            Otherwise, only nested skills are symlinked (depth 3+).
 EOF
 }
 
@@ -36,7 +38,40 @@ done
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TARGET_ARG="${1:-}"
-TARGET_DIR="${TARGET_ARG:-$SCRIPT_DIR}"
+
+if [[ $# -gt 1 ]]; then
+    echo "Error: Unexpected argument '$2'" >&2
+    usage
+    exit 1
+fi
+
+# Expand harness names to default per-user agent skills directories
+case "$(echo "$TARGET_ARG" | tr '[:upper:]' '[:lower:]')" in
+    antigravity|gemini)
+        TARGET_DIR="$HOME/.gemini/config/skills"
+        ;;
+    claude)
+        TARGET_DIR="$HOME/.claude/skills"
+        ;;
+    codex)
+        TARGET_DIR="$HOME/.codex/skills"
+        ;;
+    cursor)
+        TARGET_DIR="$HOME/.cursor/skills"
+        ;;
+    "")
+        TARGET_DIR="$SCRIPT_DIR"
+        ;;
+    *)
+        TARGET_DIR="$TARGET_ARG"
+        ;;
+esac
+
+# Handle literal tilde expansion if passed as an argument
+case "$TARGET_DIR" in
+    \~/*) TARGET_DIR="$HOME/${TARGET_DIR#\~/}" ;;
+    \~) TARGET_DIR="$HOME" ;;
+esac
 
 # Ensure TARGET_DIR exists and get absolute path
 if [ "$DRY_RUN" = false ]; then
@@ -47,7 +82,11 @@ if [ -d "$TARGET_DIR" ]; then
     TARGET_DIR="$(cd "$TARGET_DIR" && pwd)"
 else
     # Fallback for dry-run or newly created dir
-    TARGET_DIR="$(mkdir -p "$TARGET_DIR" 2>/dev/null && cd "$TARGET_DIR" && pwd || echo "$TARGET_DIR")"
+    if [[ "$TARGET_DIR" = /* ]]; then
+        TARGET_DIR="$TARGET_DIR"
+    else
+        TARGET_DIR="$(cd "$(dirname "$TARGET_DIR")" 2>/dev/null && pwd || echo "$SCRIPT_DIR")/$(basename "$TARGET_DIR")"
+    fi
 fi
 
 GIT_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || true)"
@@ -64,12 +103,14 @@ log() { echo "$@"; }
 vlog() { [ "$VERBOSE" = true ] && echo "$@"; return 0; }
 
 # Remove broken symlinks in the target directory
-while IFS= read -r -d '' link; do
-    if [ ! -e "$link" ]; then
-        log "Removing broken symlink: $link"
-        [ "$DRY_RUN" = false ] && rm "$link"
-    fi
-done < <(find "$TARGET_DIR" -maxdepth 1 -mindepth 1 -type l -print0)
+if [ -d "$TARGET_DIR" ]; then
+    while IFS= read -r -d '' link; do
+        if [ ! -e "$link" ]; then
+            log "Removing broken symlink: $link"
+            [ "$DRY_RUN" = false ] && rm "$link"
+        fi
+    done < <(find "$TARGET_DIR" -maxdepth 1 -mindepth 1 -type l -print0)
+fi
 
 # Find SKILL.md files. Skip hidden directories.
 # depth 2: skill/SKILL.md
@@ -110,4 +151,6 @@ while IFS= read -r -d '' skill_md; do
         log "Creating symlink: $link_path -> $rel_target"
         [ "$DRY_RUN" = false ] && ln -s "$rel_target" "$link_path"
     fi
-done < <(find "$SCRIPT_DIR" -mindepth "$MIN_DEPTH" -name "SKILL.md" -print0)
+done < <(find "$SCRIPT_DIR" -mindepth "$MIN_DEPTH" -name "SKILL.md" ! -path "*/.*" -print0)
+
+exit 0
